@@ -11,4 +11,4 @@ class Religion extends Model
     
     protected $table = "Religion";
 }
-}
+

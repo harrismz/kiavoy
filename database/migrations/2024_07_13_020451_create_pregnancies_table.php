@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Pregnancy', function (Blueprint $table) {
+        Schema::create('pregnancy', function (Blueprint $table) {
             $table->id();
-            $table->integer('MotherID')->unsigned();
-            $table->dateTime('FirstDayofLastPeriod')->nullable();
-            $table->dateTime('EstimateDateofDelivery')->nullable();
-            $table->integer('UpperArmCircumference')->unsigned()->nullable();
-            $table->boolean('KEK')->nullable()->default(false);
-            $table->integer('ContraceptionID')->unsigned()->nullable();
+            $table->integer('motherid')->unsigned();
+            $table->dateTime('firstdayoflastperiod')->nullable();
+            $table->dateTime('estimatedateofdelivery')->nullable();
+            $table->integer('upperarmcircumference')->unsigned()->nullable();
+            $table->boolean('kek')->nullable()->default(false);
+            $table->integer('contraceptionid')->unsigned()->nullable();
             $table->integer('PregnancyNumber')->unsigned()->nullable();
             $table->integer('NumberOfDeliveries')->unsigned()->nullable();
             $table->integer('NumberOfMiscarriages')->unsigned()->nullable();

@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class WeeklyChildMonitorPeriod extends Model
+class WeeklyChildMonitoringPeriod extends Model
 {
     use HasFactory;
-    protected $table = "WeeklyChildMonitorPeriod";
+    protected $table = "WeeklyChildMonitoringPeriod";
 }

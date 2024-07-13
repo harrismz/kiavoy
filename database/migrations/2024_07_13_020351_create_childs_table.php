@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Child', function (Blueprint $table) {
+        Schema::create('child', function (Blueprint $table) {
             $table->id();
-            $table->integer('MotherID')->unsigned()->nullable();
-            $table->integer('FatherID')->unsigned()->nullable();
-            $table->date('DateOfBirth')->nullable();
-            $table->string('BirthPlace', 100)->nullable();
-            $table->integer('ChildOf')->unsigned()->nullable();
-            $table->string('AkteNo', 100)->nullable();
-            $table->string('Gender', 100)->nullable();
+            $table->integer('motherid')->unsigned()->nullable();
+            $table->integer('fatherid')->unsigned()->nullable();
+            $table->date('dateofbirth')->nullable();
+            $table->string('birthplace', 100)->nullable();
+            $table->integer('childof')->unsigned()->nullable();
+            $table->string('akteno', 100)->nullable();
+            $table->string('gender', 100)->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('Child');
+        Schema::dropIfExists('child');
     }
 };
