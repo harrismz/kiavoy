@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer('HospitalID')->unsigned()->nullable();
             $table->integer('StaffID')->unsigned()->nullable();
             $table->integer('VaccineID')->unsigned()->nullable();
-            $table->date('DateVaccinated')->default(new DateTime());
+            $table->date('DateVaccinated');
             $table->timestamps();
         });
     }

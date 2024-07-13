@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('Kabupaten', function (Blueprint $table) {
             $table->id();
             $table->string('KabupatenName', 100);
-            $table->int('ProvinceID');
+            $table->integer('ProvinceID')->unsigned()->nullable();
             $table->timestamps();
         });
     }

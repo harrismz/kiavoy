@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('MotherID')->unsigned()->nullable();
             $table->integer('FatherID')->unsigned()->nullable();
-            $table->date('DateOfBirth')->nullable()->default(new DateTime());
+            $table->date('DateOfBirth')->nullable();
             $table->string('BirthPlace', 100)->nullable();
             $table->integer('ChildOf')->unsigned()->nullable();
             $table->string('AkteNo', 100)->nullable();

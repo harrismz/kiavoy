@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('StaffName', 100)->nullable();
             $table->integer('HospitalID')->unsigned()->nullable();
-            $table->string('Role', 100)->nullable()->default('text');
+            $table->string('Role', 100)->nullable();
             $table->timestamps();
         });
     }

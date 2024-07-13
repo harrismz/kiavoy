@@ -29,7 +29,7 @@ return new class extends Migration
             $table->longText('WeightBaby')->nullable();
             $table->integer('StaffID')->unsigned()->nullable();
             $table->integer('HospitalID')->unsigned()->nullable();
-            $table->dateTime('NextControl')->nullable()->default(new DateTime());
+            $table->dateTime('NextControl')->nullable();
 
             $table->timestamps();
         });
