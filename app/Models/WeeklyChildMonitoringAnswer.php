@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class WeeklyChildMonitoringAnswer extends Model
 {
     use HasFactory;
+    
+    protected $table = "WeeklyChildMonitoringAnswer";
 }

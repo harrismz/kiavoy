@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class ScreeningHistory extends Model
 {
     use HasFactory;
+    
+    protected $table = "ScreeningHistory";
 }
