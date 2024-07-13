@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ScreeningHistory', function (Blueprint $table) {
+        Schema::create('screening_history', function (Blueprint $table) {
             $table->id();
-            $table->integer('ChildID')->unsigned()->nullable();
-            $table->float('BodyWeightToHeight')->default(0);
-            $table->float('HeadCircumference')->default(0);
+            $table->integer('child_id')->unsigned()->nullable();
+            $table->float('body_weight_to_height')->default(0);
+            $table->float('head_circumference')->default(0);
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ScreeningHistory');
+        Schema::dropIfExists('screening_history');
     }
 };

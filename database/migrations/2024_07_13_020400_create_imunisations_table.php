@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('imunisation', function (Blueprint $table) {
             $table->id();
-            $table->integer('childid')->unsigned()->nullable();
-            $table->integer('hospitalid')->unsigned()->nullable();
-            $table->integer('staffid')->unsigned()->nullable();
-            $table->integer('vaccineid')->unsigned()->nullable();
-            $table->date('datevaccinated');
+            $table->integer('child_id')->unsigned()->nullable();
+            $table->integer('hospital_id')->unsigned()->nullable();
+            $table->integer('staff_id')->unsigned()->nullable();
+            $table->integer('vaccine_id')->unsigned()->nullable();
+            $table->date('date_vaccinated');
             $table->timestamps();
         });
     }

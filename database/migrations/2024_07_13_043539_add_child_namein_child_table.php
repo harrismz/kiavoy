@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('Child', function (Blueprint $table) {
-            $table->string('ChildName', 100)->nullable()->after('id');
+        Schema::table('child', function (Blueprint $table) {
+            $table->string('child_name', 100)->nullable()->after('id');
         });
     }
 
@@ -21,13 +21,13 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('Child', function (Blueprint $table) {
+        Schema::table('child', function (Blueprint $table) {
             $columns = [
-                'ChildName'
+                'child_name'
             ];
 
             foreach ($columns as $column) {
-                if( Schema::hasColumn('Child', $column)){
+                if( Schema::hasColumn('child', $column)){
                     try {
                         //ini untuk hapus contraints, kalo ternayata
                         // kolomnya ga ada contrainst, di pass aja.

@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('kabupaten', function (Blueprint $table) {
             $table->id();
-            $table->string('kabupatenname', 100);
-            $table->integer('provinceid')->unsigned()->nullable();
+            $table->string('kabupaten_name', 100);
+            $table->integer('province_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }

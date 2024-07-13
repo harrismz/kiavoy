@@ -13,22 +13,22 @@ return new class extends Migration
     {
         Schema::create('pregnancy', function (Blueprint $table) {
             $table->id();
-            $table->integer('motherid')->unsigned();
-            $table->dateTime('firstdayoflastperiod')->nullable();
-            $table->dateTime('estimatedateofdelivery')->nullable();
-            $table->integer('upperarmcircumference')->unsigned()->nullable();
+            $table->integer('mother_id')->unsigned();
+            $table->dateTime('first_day_of_last_period')->nullable();
+            $table->dateTime('estimate_date_of_delivery')->nullable();
+            $table->integer('upper_arm_circumference')->unsigned()->nullable();
             $table->boolean('kek')->nullable()->default(false);
-            $table->integer('contraceptionid')->unsigned()->nullable();
-            $table->integer('PregnancyNumber')->unsigned()->nullable();
-            $table->integer('NumberOfDeliveries')->unsigned()->nullable();
-            $table->integer('NumberOfMiscarriages')->unsigned()->nullable();
-            $table->integer('NumberOfLivingChildren')->unsigned()->nullable();
-            $table->integer('NumberOfDeceasedChildren')->unsigned()->nullable();
-            $table->integer('NumberOfPrematureChildren')->unsigned()->nullable();
-            $table->integer('IntervalOfLastDelivery')->unsigned()->nullable();
-            $table->string('TetanusImmunization', 100)->nullable();
-            $table->string('LastDeliveryHelper', 100)->nullable();
-            $table->string('LastDeliveryMethod', 100)->nullable();
+            $table->integer('contraception_id')->unsigned()->nullable();
+            $table->integer('pregnancy_number')->unsigned()->nullable();
+            $table->integer('number_of_deliveries')->unsigned()->nullable();
+            $table->integer('number_of_miscarriages')->unsigned()->nullable();
+            $table->integer('number_of_living_children')->unsigned()->nullable();
+            $table->integer('number_of_deceased_children')->unsigned()->nullable();
+            $table->integer('number_of_premature_children')->unsigned()->nullable();
+            $table->integer('interval_of_last_delivery')->unsigned()->nullable();
+            $table->string('tetanus_immunization', 100)->nullable();
+            $table->string('last_delivery_helper', 100)->nullable();
+            $table->string('last_delivery_method', 100)->nullable();
             $table->timestamps();
         });
     }
@@ -38,6 +38,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('Pregnancy');
+        Schema::dropIfExists('pregnancy');
     }
 };

@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Weighing', function (Blueprint $table) {
+        Schema::create('weighing', function (Blueprint $table) {
             $table->id();
-            $table->integer('ChildID')->unsigned()->nullable();
-            $table->integer('Age')->unsigned()->nullable();
-            $table->float('Weight')->nullable()->default(0);
-            $table->float('WeightGain')->nullable()->default(0);
-            $table->boolean('NT')->nullable()->default(false);
+            $table->integer('child_id')->unsigned()->nullable();
+            $table->integer('age')->unsigned()->nullable();
+            $table->float('weight')->nullable()->default(0);
+            $table->float('weight_gain')->nullable()->default(0);
+            $table->boolean('nt')->nullable()->default(false);
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('Weighing');
+        Schema::dropIfExists('weighing');
     }
 };

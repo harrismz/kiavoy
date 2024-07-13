@@ -14,17 +14,17 @@ return new class extends Migration
         Schema::create('father', function (Blueprint $table) {
             $table->id();
             $table->integer('nik')->unsigned();
-            $table->integer('nojkn')->unsigned();
+            $table->integer('no_jkn')->unsigned();
             $table->string('name', 100);
-            $table->dateTime('dateofbirth');
-            $table->string('birthplace', 100);
-            $table->string('phonenumber', 100)->nullable();
+            $table->dateTime('date_of_birth');
+            $table->string('birth_place', 100);
+            $table->string('phone_number', 100)->nullable();
             $table->longText('address')->nullable();
-            $table->integer('kecamatanid')->unsigned();
-            $table->integer('religionid')->unsigned()->nullable();
-            $table->integer('educationid')->unsigned()->nullable();
-            $table->integer('bloodtypeid')->unsigned()->nullable();
-            $table->integer('jobid')->unsigned()->nullable();
+            $table->integer('kecamatan_id')->unsigned();
+            $table->integer('religion_id')->unsigned()->nullable();
+            $table->integer('education_id')->unsigned()->nullable();
+            $table->integer('blood_type_id')->unsigned()->nullable();
+            $table->integer('job_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }

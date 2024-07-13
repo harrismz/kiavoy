@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('WeeklyChildMonitoringQuestion', function (Blueprint $table) {
+        Schema::create('weekly_child_monitoring_question', function (Blueprint $table) {
             $table->id();
-            $table->integer('PeriodID')->unsigned()->nullable();
-            $table->string('QuestionText', 100)->nullable();
+            $table->integer('period_id')->unsigned()->nullable();
+            $table->string('question_text', 100)->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('WeeklyChildMonitoringQuestion');
+        Schema::dropIfExists('weekly_child_monitoring_question');
     }
 };

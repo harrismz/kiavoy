@@ -11,25 +11,25 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('PregnancyHistory', function (Blueprint $table) {
+        Schema::create('pregnancy_history', function (Blueprint $table) {
             $table->id();
-            $table->integer('PregnancyID')->unsigned()->nullable();
-            $table->longText('Complaint')->nullable();
-            $table->string('BloodPressure', 100)->nullable();
-            $table->integer('Weight')->unsigned()->nullable();
-            $table->integer('GestationalAge')->unsigned()->nullable();
-            $table->integer('FundalHeight')->unsigned()->nullable();
-            $table->string('FetusPosition', 100)->nullable();
-            $table->integer('FetalHeartRate')->unsigned()->nullable();
-            $table->boolean('SwollenFoot')->nullable()->default(false);
-            $table->longText('LabResult')->nullable();
-            $table->longText('Action')->nullable();
-            $table->longText('AdviceGiven')->nullable();
-            $table->longText('USGImage')->nullable();
-            $table->longText('WeightBaby')->nullable();
-            $table->integer('StaffID')->unsigned()->nullable();
-            $table->integer('HospitalID')->unsigned()->nullable();
-            $table->dateTime('NextControl')->nullable();
+            $table->integer('pregnancy_id')->unsigned()->nullable();
+            $table->longText('complaint')->nullable();
+            $table->string('blood_pressure', 100)->nullable();
+            $table->integer('weight')->unsigned()->nullable();
+            $table->integer('gestational_age')->unsigned()->nullable();
+            $table->integer('fundal_height')->unsigned()->nullable();
+            $table->string('fetus_position', 100)->nullable();
+            $table->integer('fetal_heart_rate')->unsigned()->nullable();
+            $table->boolean('swollen_foot')->nullable()->default(false);
+            $table->longText('lab_result')->nullable();
+            $table->longText('action')->nullable();
+            $table->longText('advice_given')->nullable();
+            $table->longText('usg_image')->nullable();
+            $table->longText('weight_baby')->nullable();
+            $table->integer('staff_id')->unsigned()->nullable();
+            $table->integer('hospital_id')->unsigned()->nullable();
+            $table->dateTime('next_control')->nullable();
 
             $table->timestamps();
         });
@@ -40,6 +40,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('PregnancyHistory');
+        Schema::dropIfExists('pregnancy_history');
     }
 };

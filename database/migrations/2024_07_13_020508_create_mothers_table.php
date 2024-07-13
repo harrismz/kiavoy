@@ -11,21 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Mother', function (Blueprint $table) {
+        Schema::create('mother', function (Blueprint $table) {
             $table->id();
-            $table->integer('NIK')->unsigned();
-            $table->integer('NoJKN')->unsigned();
-            $table->string('Name', 100);
-            $table->dateTime('DateOfBirth');
-            $table->string('BirthPlace', 100);
-            $table->string('PhoneNumber', 100)->nullable();
-            $table->longText('Address')->nullable();
-            $table->integer('KecamatanID')->unsigned();
-            $table->integer('ReligionID')->unsigned()->nullable();
-            $table->integer('EducationID')->unsigned()->nullable();
-            $table->integer('BloodTypeID')->unsigned()->nullable();
-            $table->integer('JobID')->unsigned()->nullable();
-            $table->integer('Height')->unsigned()->nullable();
+            $table->integer('nik')->unsigned();
+            $table->integer('no_jkn')->unsigned();
+            $table->string('name', 100);
+            $table->dateTime('date_of_birth');
+            $table->string('birth_place', 100);
+            $table->string('phone_number', 100)->nullable();
+            $table->longText('address')->nullable();
+            $table->integer('kecamatan_id')->unsigned();
+            $table->integer('religion_id')->unsigned()->nullable();
+            $table->integer('education_id')->unsigned()->nullable();
+            $table->integer('blood_type_id')->unsigned()->nullable();
+            $table->integer('job_id')->unsigned()->nullable();
+            $table->integer('height')->unsigned()->nullable();
             $table->timestamps();
         });
     }
@@ -35,6 +35,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('Mother');
+        Schema::dropIfExists('mother');
     }
 };

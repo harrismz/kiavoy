@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('WeeklyMonitoringAnswer', function (Blueprint $table) {
+        Schema::create('weekly_monitoring_answer', function (Blueprint $table) {
             $table->id();
-            $table->integer('PregnancyID')->unsigned()->nullable();
-            $table->integer('WeeklyMonitoringQuestionID')->unsigned()->nullable();
-            $table->integer('WeekNumber')->unsigned()->nullable();
-            $table->boolean('Answer')->nullable()->default(false);
+            $table->integer('pregnancy_id')->unsigned()->nullable();
+            $table->integer('weekly_monitoring_question_id')->unsigned()->nullable();
+            $table->integer('week_number')->unsigned()->nullable();
+            $table->boolean('answer')->nullable()->default(false);
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('WeeklyMonitoringAnswer');
+        Schema::dropIfExists('weekly_monitoring_answer');
     }
 };
