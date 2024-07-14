@@ -17,6 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/', function () {
+    return view('app');
+})
+->name('application');
+
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
