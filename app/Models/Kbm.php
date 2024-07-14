@@ -9,5 +9,5 @@ class Kbm extends Model
 {
     use HasFactory;
     
-    protected $table = "KBM";
+    protected $table = "kbm";
 }

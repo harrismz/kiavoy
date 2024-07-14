@@ -9,6 +9,6 @@ class Religion extends Model
 {
     use HasFactory;
     
-    protected $table = "Religion";
+    protected $table = "religion";
 }
 
