@@ -20,21 +20,27 @@ class BloodTypeTableSeeder extends Seeder
     public function run()
     {
         //Data Type
-        $dataType = $this->dataType('name', 'bloodtype');
+        $dataType = $this->dataType('name', 'blood_type');
         if (!$dataType->exists) {
             $dataType->fill([
-                'slug'                  => 'bloodtype',
-                'display_name_singular' => __('voyager::seeders.data_types.bloodtype.singular'),
-                'display_name_plural'   => __('voyager::seeders.data_types.bloodtype.plural'),
-                'icon'                  => 'voyager-doplet',
-                'model_name'            => 'TCG\\Voyager\\Models\\BloodType',
+                'slug'                  => 'blood-type',
+                'display_name_singular' => __('voyager::seeders.data_types.blood_type.singular'),
+                'display_name_plural'   => __('voyager::seeders.data_types.blood_type.plural'),
+                'icon'                  => 'voyager-droplet',
+                'model_name'            => 'App\Models\BloodType',
                 'controller'            => '',
                 'generate_permissions'  => 1,
                 'description'           => '',
+                'details'               => [
+                    'order_column' => 'blood_type_name',
+                    'order_display_column' => 'blood_type_name',
+                    'order_direction' => 'asc',
+                    'default_search_key' => 'blood_type_name',
+                ],
             ])->save();
         }
         //Data Rows
-        $bloodtypeDataType = DataType::where('slug', 'bloodtype')->firstOrFail();
+        $bloodtypeDataType = DataType::where('slug', 'blood-type')->firstOrFail();
         $dataRow = $this->dataRow($bloodtypeDataType, 'id');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -50,11 +56,11 @@ class BloodTypeTableSeeder extends Seeder
             ])->save();
         }
 
-        $dataRow = $this->dataRow($bloodtypeDataType, 'BloodTypeName');
+        $dataRow = $this->dataRow($bloodtypeDataType, 'blood_type_name');
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'select_dropdown',
-                'display_name' => __('voyager::seeders.data_rows.BloodTypeName'),
+                'display_name' => __('voyager::seeders.data_rows.blood_type_name'),
                 'required'     => 1,
                 'browse'       => 1,
                 'read'         => 1,
@@ -76,11 +82,11 @@ class BloodTypeTableSeeder extends Seeder
             ])->save();
         }
 
-        $dataRow = $this->dataRow($bloodtypeDataType, 'Reshus');
+        $dataRow = $this->dataRow($bloodtypeDataType, 'reshus');
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'text',
-                'display_name' => __('voyager::seeders.data_rows.Reshus'),
+                'display_name' => __('voyager::seeders.data_rows.reshus'),
                 'required'     => 1,
                 'browse'       => 1,
                 'read'         => 1,
@@ -128,9 +134,9 @@ class BloodTypeTableSeeder extends Seeder
         $menu = Menu::where('name', 'admin')->firstOrFail();
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
-            'title'   => __('voyager::seeders.menu_items.BloodTypes'),
+            'title'   => __('voyager::seeders.menu_items.blood_type'),
             'url'     => '',
-            'route'   => 'voyager.bloodtype.index',
+            'route'   => 'voyager.blood-type.index',
         ]);
         if (!$menuItem->exists) {
             $menuItem->fill([
@@ -143,15 +149,15 @@ class BloodTypeTableSeeder extends Seeder
         }
 
         //Permissions
-        Permission::generateFor('bloodtype');
+        Permission::generateFor('blood_type');
 
         //Content
         $bloodtype = BloodType::firstOrNew([
-            'BloodTypeName' => 'A',
+            'blood_type_name' => 'A',
         ]);
         if (!$bloodtype->exists) {
             $bloodtype->fill([
-                'BloodTypeName' => 'A',
+                'blood_type_name' => 'A',
             ])->save();
         }
 
