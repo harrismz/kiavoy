@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class BloodType extends Model
 {
     use HasFactory;
-    protected $table = "BloodType";
+    protected $table = "blood_type";
 }
