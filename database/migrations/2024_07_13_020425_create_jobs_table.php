@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('job', function (Blueprint $table) {
             $table->id();
-            $table->string('jobname', 100);
+            $table->string('job_name', 100);
             $table->timestamps();
         });
     }

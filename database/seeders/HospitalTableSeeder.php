@@ -3,14 +3,14 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\BloodType;
+use App\Models\Hospital;
 use TCG\Voyager\Models\DataRow;
 use TCG\Voyager\Models\DataType;
 use TCG\Voyager\Models\Menu;
 use TCG\Voyager\Models\MenuItem;
 use TCG\Voyager\Models\Permission;
 
-class BloodTypeTableSeeder extends Seeder
+class HospitalTableSeeder extends Seeder
 {
     /**
      * Auto generated seed file.
@@ -20,29 +20,35 @@ class BloodTypeTableSeeder extends Seeder
     public function run()
     {
         //Data Type
-        $dataType = $this->dataType('name', 'bloodtype');
+        $dataType = $this->dataType('name', 'hospital');
         if (!$dataType->exists) {
             $dataType->fill([
-                'slug'                  => 'bloodtype',
-                'display_name_singular' => __('voyager::seeders.data_types.bloodtype.singular'),
-                'display_name_plural'   => __('voyager::seeders.data_types.bloodtype.plural'),
-                'icon'                  => 'voyager-doplet',
-                'model_name'            => 'TCG\\Voyager\\Models\\BloodType',
+                'slug'                  => 'hospital',
+                'display_name_singular' => __('voyager::seeders.data_types.hospital.singular'),
+                'display_name_plural'   => __('voyager::seeders.data_types.hospital.plural'),
+                'icon'                  => 'voyager-anchor',
+                'model_name'            => 'App\Models\Hospital',
                 'controller'            => '',
                 'generate_permissions'  => 1,
                 'description'           => '',
+                'details'               => [
+                    'order_column' => 'hospital_name',
+                    'order_display_column' => 'hospital_name',
+                    'order_direction' => 'asc',
+                    'default_search_key' => 'hospital_name',
+                ],
             ])->save();
         }
         //Data Rows
-        $bloodtypeDataType = DataType::where('slug', 'bloodtype')->firstOrFail();
-        $dataRow = $this->dataRow($bloodtypeDataType, 'id');
+        $childDataType = DataType::where('slug', 'hospital')->firstOrFail();
+        $dataRow = $this->dataRow($childDataType, 'id');
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'number',
                 'display_name' => __('voyager::seeders.data_rows.id'),
                 'required'     => 1,
-                'browse'       => 0,
-                'read'         => 0,
+                'browse'       => 1,
+                'read'         => 1,
                 'edit'         => 0,
                 'add'          => 0,
                 'delete'       => 0,
@@ -50,51 +56,22 @@ class BloodTypeTableSeeder extends Seeder
             ])->save();
         }
 
-        $dataRow = $this->dataRow($bloodtypeDataType, 'BloodTypeName');
+        $dataRow = $this->dataRow($childDataType, 'hospital_name');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'select_dropdown',
-                'display_name' => __('voyager::seeders.data_rows.BloodTypeName'),
+                'type'         => 'text',
+                'display_name' => __('voyager::seeders.data_rows.hospital_name'),
                 'required'     => 1,
                 'browse'       => 1,
                 'read'         => 1,
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 1,
-                'details'      => [
-                    'default' => '',
-                    'null'    => '',
-                    'options' => [
-                        '' => '-- None --',
-                    ],
-                    'relationship' => [
-                        'key'   => 'id',
-                        'label' => 'name',
-                    ],
-                ],
                 'order' => 2,
             ])->save();
         }
 
-        $dataRow = $this->dataRow($bloodtypeDataType, 'Reshus');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'text',
-                'display_name' => __('voyager::seeders.data_rows.Reshus'),
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'details'      => [
-                    'default' => 1,
-                ],
-                'order' => 3,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($bloodtypeDataType, 'created_at');
+        $dataRow = $this->dataRow($childDataType, 'created_at');
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'timestamp',
@@ -105,11 +82,11 @@ class BloodTypeTableSeeder extends Seeder
                 'edit'         => 0,
                 'add'          => 0,
                 'delete'       => 0,
-                'order'        => 4,
+                'order'        => 3,
             ])->save();
         }
 
-        $dataRow = $this->dataRow($bloodtypeDataType, 'updated_at');
+        $dataRow = $this->dataRow($childDataType, 'updated_at');
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'timestamp',
@@ -120,7 +97,7 @@ class BloodTypeTableSeeder extends Seeder
                 'edit'         => 0,
                 'add'          => 0,
                 'delete'       => 0,
-                'order'        => 5,
+                'order'        => 4,
             ])->save();
         }
 
@@ -128,32 +105,22 @@ class BloodTypeTableSeeder extends Seeder
         $menu = Menu::where('name', 'admin')->firstOrFail();
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
-            'title'   => __('voyager::seeders.menu_items.BloodTypes'),
+            'title'   => __('voyager::seeders.menu_items.hospital'),
             'url'     => '',
-            'route'   => 'voyager.bloodtype.index',
+            'route'   => 'voyager.hospital.index',
         ]);
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'voyager-droplet',
+                'icon_class' => 'voyager-company',
                 'color'      => null,
                 'parent_id'  => null,
-                'order'      => 8,
+                'order'      => 2,
             ])->save();
         }
 
         //Permissions
-        Permission::generateFor('bloodtype');
-
-        //Content
-        $bloodtype = BloodType::firstOrNew([
-            'BloodTypeName' => 'A',
-        ]);
-        if (!$bloodtype->exists) {
-            $bloodtype->fill([
-                'BloodTypeName' => 'A',
-            ])->save();
-        }
+        Permission::generateFor('hospital');
 
     }
 

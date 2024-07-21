@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('WeeklyChildMonitoringPeriod', function (Blueprint $table) {
+        Schema::create('weekly_child_monitoring_period', function (Blueprint $table) {
             $table->id();
-            $table->string('PeriodName', 100)->nullable();
-            $table->integer('StartMonth')->unsigned()->nullable();
-            $table->integer('EndMonth')->unsigned()->nullable();
+            $table->string('period_name', 100)->nullable();
+            $table->integer('start_month')->unsigned()->nullable();
+            $table->integer('end_month')->unsigned()->nullable();
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('WeeklyChildMonitoringPeriod');
+        Schema::dropIfExists('weekly_child_monitoring_period');
     }
 };

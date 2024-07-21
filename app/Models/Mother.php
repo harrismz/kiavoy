@@ -9,5 +9,5 @@ class Mother extends Model
 {
     use HasFactory;
     
-    protected $table = "Mother";
+    protected $table = "mother";
 }

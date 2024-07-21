@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('child', function (Blueprint $table) {
             $table->id();
-            $table->integer('motherid')->unsigned()->nullable();
-            $table->integer('fatherid')->unsigned()->nullable();
-            $table->date('dateofbirth')->nullable();
-            $table->string('birthplace', 100)->nullable();
-            $table->integer('childof')->unsigned()->nullable();
-            $table->string('akteno', 100)->nullable();
+            $table->integer('mother_id')->unsigned()->nullable();
+            $table->integer('father_id')->unsigned()->nullable();
+            $table->date('date_of_birth')->nullable();
+            $table->string('birth_place', 100)->nullable();
+            $table->integer('child_of')->unsigned()->nullable();
+            $table->string('akte_no', 100)->nullable();
             $table->string('gender', 100)->nullable();
+            $table->integer('blood_type_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }

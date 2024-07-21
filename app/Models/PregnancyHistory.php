@@ -9,5 +9,5 @@ class PregnancyHistory extends Model
 {
     use HasFactory;
     
-    protected $table = "PregnancyHistory";
+    protected $table = "pregnancy_history";
 }

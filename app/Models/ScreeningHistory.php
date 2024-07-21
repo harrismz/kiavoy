@@ -9,5 +9,5 @@ class ScreeningHistory extends Model
 {
     use HasFactory;
     
-    protected $table = "ScreeningHistory";
+    protected $table = "screening_history";
 }

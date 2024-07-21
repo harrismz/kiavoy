@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('KBM', function (Blueprint $table) {
+        Schema::create('kbm', function (Blueprint $table) {
             $table->id();
-            $table->integer('Age')->unsigned()->nullable();
-            $table->integer('ValueFemale')->unsigned()->nullable();
-            $table->integer('ValueMale')->unsigned()->nullable();
+            $table->integer('age')->unsigned()->nullable();
+            $table->integer('value_female')->unsigned()->nullable();
+            $table->integer('value_male')->unsigned()->nullable();
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('KBM');
+        Schema::dropIfExists('kbm');
     }
 };

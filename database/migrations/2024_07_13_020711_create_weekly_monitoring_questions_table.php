@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('WeeklyMonitoringQuestion', function (Blueprint $table) {
+        Schema::create('weekly_monitoring_question', function (Blueprint $table) {
             $table->id();
-            $table->string('QuestionText', 100)->nullable();
+            $table->string('question_text', 100)->nullable();
             $table->timestamps();
         });
     }
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('WeeklyMonitoringQuestion');
+        Schema::dropIfExists('weekly_monitoring_question');
     }
 };

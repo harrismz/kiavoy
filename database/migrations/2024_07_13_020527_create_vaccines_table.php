@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Vaccine', function (Blueprint $table) {
+        Schema::create('vaccine', function (Blueprint $table) {
             $table->id();
-            $table->string('VaccineName', 100);
-            $table->integer('VaccineGiven')->unsigned()->nullable()->default(0);
-            $table->string('VaccineNotes', 100)->nullable();
+            $table->string('vaccine_name', 100);
+            $table->integer('vaccine_given')->unsigned()->nullable()->default(0);
+            $table->string('vaccine_notes', 100)->nullable();
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('Vaccine');
+        Schema::dropIfExists('vaccine');
     }
 };

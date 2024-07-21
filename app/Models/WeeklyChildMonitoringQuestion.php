@@ -10,5 +10,5 @@ class WeeklyChildMonitoringQuestion extends Model
     use HasFactory;
 
     
-    protected $table = "WeeklyChildMonitoringQuestion";
+    protected $table = "weekly_child_monitoring_question";
 }

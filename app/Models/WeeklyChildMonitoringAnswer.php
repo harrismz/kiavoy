@@ -9,5 +9,5 @@ class WeeklyChildMonitoringAnswer extends Model
 {
     use HasFactory;
     
-    protected $table = "WeeklyChildMonitoringAnswer";
+    protected $table = "weekly_child_monitoring_answer";
 }

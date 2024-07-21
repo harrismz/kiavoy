@@ -9,5 +9,5 @@ class Contraception extends Model
 {
     use HasFactory;
     
-    protected $table = "Contraception";
+    protected $table = "contraception";
 }

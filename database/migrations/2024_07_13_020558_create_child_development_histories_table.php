@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ChildDevelopmentHistory', function (Blueprint $table) {
+        Schema::create('child_development_history', function (Blueprint $table) {
             $table->id();
-            $table->integer('ChildID')->unsigned()->nullable();
-            $table->longText('Complaint')->nullable();
-            $table->float('Weight')->nullable()->default(0);
+            $table->integer('child_id')->unsigned()->nullable();
+            $table->longText('complaint')->nullable();
+            $table->float('weight')->nullable()->default(0);
             $table->float('height')->nullable()->default(0);
-            $table->float('HeadCircumference')->nullable()->default(0);
-            $table->string('ImmunisationStatus', 100)->nullable();
-            $table->longText('Action')->nullable();
-            $table->longText('AdviceGiven')->nullable();
+            $table->float('head_circumference')->nullable()->default(0);
+            $table->string('immunisation_status', 100)->nullable();
+            $table->longText('action')->nullable();
+            $table->longText('advice_given')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ChildDevelopmentHistory');
+        Schema::dropIfExists('child_development_history');
     }
 };
