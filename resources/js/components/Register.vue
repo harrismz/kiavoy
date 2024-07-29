@@ -15,8 +15,14 @@
                 <p class="mb-6 text-center">Buat akun untuk dapat mengakses semua fitur KIA</p>
                 <form @submit.prevent="register">
                     <div class="mb-4">
+                        <label for="nik" class="block text-sm font-medium text-gray-700">NIK</label>
+                        <input v-model="form.nik" type="number" id="nik"
+                            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            required />
+                    </div>
+                    <div class="mb-4">
                         <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
-                        <input v-model="form.name" type="name" id="name"
+                        <input v-model="form.name" type="text" id="name"
                             class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                             required />
                     </div>
@@ -50,7 +56,9 @@ import { useRouter } from 'vue-router';
 export default {
     setup() {
         const router = useRouter();
+        const baseUrl = document.querySelector('meta[name="base-url"]').getAttribute('content');
         const form = reactive({
+            nik: '',
             name: '',
             email: '',
             password: ''
@@ -58,7 +66,7 @@ export default {
 
         const register = async () => {
             try {
-                const response = await axios.post('http://localhost:8000/api/register', form);
+                const response = await axios.post(baseUrl + '/api/register', form);
                 console.log("creating", response.data);
                 router.push('/identitas-ibu');
             } catch (error) {

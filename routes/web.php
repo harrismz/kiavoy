@@ -23,7 +23,7 @@ Route::get('/check-auth', function () {
     return Auth::check() ? 'Authenticated' : 'Not Authenticated';
 });
 
-// Auth::routes();
+Auth::routes();
 
 // Route::get('/login', function () {
 //     return view('auth.login');
@@ -31,8 +31,12 @@ Route::get('/check-auth', function () {
 
 // Route::post('/login', [CustomLoginController::class, 'login']);
 
-Route::group(['prefix' => 'admin'], function () {
+Route::redirect('/login', '/admin/login');
+
+Route::group(['prefix' => 'admin',
+    'middleware' => 'auth'], function () {
     Voyager::routes();
     // Route::post('login', [CustomLoginController::class, 'login']);
 });
-Route::view('/{any}', 'welcome')->where('any', '.*');
+
+Route::view('/{any}', 'welcome')->where('any', '.*')->middleware('auth');

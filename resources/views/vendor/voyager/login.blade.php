@@ -61,7 +61,7 @@
 <body>
     <div class="login-container">
         <div class="login-image">
-            <img src="/path/to/your/logo.png" alt="Logo">
+            <img src="{{ url("/storage/settings/July2024/v1SNW071gmIWJmDqqIdh.png") }}" alt="Logo">
         </div>
         <div class="login-form">
             <h2>Login</h2>

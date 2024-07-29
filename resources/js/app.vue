@@ -1,11 +1,29 @@
 <template>
-    <v-app>
+    <component :is="layout">
         <router-view></router-view>
-    </v-app>
+    </component>
 </template>
 
 <script>
+import { computed } from 'vue';
+import { useRoute } from 'vue-router';
+import LoginLayout from './layouts/LoginLayout.vue';
+import UserLayout from './layouts/UserLayout.vue';
+
 export default {
-    name: 'App',
-};
+    components: {
+        LoginLayout,
+        UserLayout
+    },
+    setup() {
+        const route = useRoute();
+        const layout = computed(() => {
+            return route.meta.layout === 'UserLayout' ? UserLayout : LoginLayout;
+        });
+
+        return {
+            layout
+        };
+    }
+}
 </script>

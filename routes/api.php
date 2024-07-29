@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\BloodTypeController;
+use App\Http\Controllers\EducationController;
+use App\Http\Controllers\JobController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,4 +26,8 @@ use App\Http\Controllers\BloodTypeController;
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::get('/kelurahan', [LocationController::class, 'getKelurahan']);
+Route::get('/kecamatan/{id}', [LocationController::class, 'getKecamatan']);
+Route::get('/provinsi/{id}', [LocationController::class, 'getProvince']);
+Route::get('/pendidikan', [EducationController::class, 'index']);
+Route::get('/pekerjaan', [JobController::class, 'index']);
 Route::get('/blood-types', [BloodTypeController::class, 'index']);

@@ -13,7 +13,8 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|unique:users',
+            'nik' => 'required|unique:users,nik',
+            'name' => 'required|unique:users,name',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6'
         ]);
@@ -23,6 +24,7 @@ class AuthController extends Controller
         }
 
         $user = User::create([
+            'nik' => $request->nik,
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password)

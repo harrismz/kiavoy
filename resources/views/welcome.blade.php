@@ -6,6 +6,8 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <meta name="base-url" content="{{ url('/') }}">
+
     <title>KIA Digital</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -13,6 +15,7 @@
     <script>
         window.routeUrl = {
             login: "{{ route('voyager.login') }}",
+            logout:"{{ route('voyager.logout') }}"
         };
     </script>
 </head>

@@ -32,7 +32,7 @@ export default {
     data() {
         return {
             currentWeek: 0,
-            weeks: ['Minggu ke-3', 'Minggu ke-4', 'Minggu ke-5', 'Minggu ke-6', 'Minggu ke-7'],
+            weeks: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
             cards: [
                 { title: 'Info Janin Secara Umum', description: 'Tinggi : xxx cm Berat : xxx cm Ukuran : xxx Ciri-ciri : xxx', link: '#' },
                 { title: 'Diary Ibu', description: 'Pemantauan mingguan, perawatan sehari-hari, serta keluhan yang dirasakan ibu dapat diisi secara mandiri dalam menu ini.', link: '#' },

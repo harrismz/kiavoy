@@ -11,20 +11,58 @@ class LocationController extends Controller
 {
     public function getKelurahan()
     {   $kelurahan = Kelurahan::all();
-        return response()->json($kelurahan);
+
+        // Mengecek apakah user ditemukan
+        if ($kelurahan) {
+            // Mengembalikan response jika kelurahan ditemukan
+            return response()->json($kelurahan, 200);
+        } else {
+            // Mengembalikan response jika kelurahan tidak ditemukan
+            return response()->json(['message' => 'kelurahan not found.'], 404);
+        }
     }
 
-    public function getKecamatan(Request $request)
+    public function getKecamatan($id)
     {
-        $kelurahan_id = $request->kelurahan_id;
-        $kecamatan = Kecamatan::where("kelurahan_id", $kelurahan_id);
-        return response()->json($kecamatan);
+        $kecamatan_id = Kelurahan::where('id',$id)->pluck('kecamatan_id');
+        $kecamatan = Kecamatan::find($kecamatan_id);
+
+        // Mengecek apakah user ditemukan
+        if ($kecamatan) {
+            // Mengembalikan response jika kecamatan ditemukan
+            return response()->json($kecamatan, 200);
+        } else {
+            // Mengembalikan response jika kecamatan tidak ditemukan
+            return response()->json(['message' => 'kecamatan not found.'], 404);
+        }
+    }
+    public function getKabupaten($id)
+    {
+        $kabupaten_id = Kecamatan::where('id',$id)->pluck('kabupaten_id');
+        $kabupaten = Kabupaten::find($kabupaten_id);
+
+        // Mengecek apakah user ditemukan
+        if ($kabupaten) {
+            // Mengembalikan response jika kabupaten ditemukan
+            return response()->json($kabupaten, 200);
+        } else {
+            // Mengembalikan response jika kabupaten tidak ditemukan
+            return response()->json(['message' => 'kabupaten not found.'], 404);
+        }
     }
 
-    public function getProvince(Request $request)
+    public function getProvince($id)
     {
-        $kecamatan_id = $request->kecamatan_id;
-        $province = Province::where("kecamatan_id", $kecamatan_id);
-        return response()->json($kelurahan_id);
+        $provinsi_id = Kabupaten::where('id',$id)->pluck('provinsi_id');
+        $province = Province::find($provinsi_id);
+
+        // Mengecek apakah user ditemukan
+        if ($province) {
+            // Mengembalikan response jika province ditemukan
+            return response()->json($province, 200);
+        } else {
+            // Mengembalikan response jika province tidak ditemukan
+            return response()->json(['message' => 'province not found.'], 404);
+        }
     }
 }
