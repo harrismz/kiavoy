@@ -9,6 +9,12 @@
     <title>KIA Digital</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <script>
+        window.routeUrl = {
+            login: "{{ route('voyager.login') }}",
+        };
+    </script>
 </head>
 <body>
     <div id="app"></div>

@@ -19,9 +19,20 @@ use Illuminate\Support\Facades\Route;
 // })
 // ->name('application');
 
+Route::get('/check-auth', function () {
+    return Auth::check() ? 'Authenticated' : 'Not Authenticated';
+});
+
+// Auth::routes();
+
+// Route::get('/login', function () {
+//     return view('auth.login');
+// })->name('login');
+
+// Route::post('/login', [CustomLoginController::class, 'login']);
 
 Route::group(['prefix' => 'admin'], function () {
-    // Route::post('login', [CustomLoginController::class, 'login']);
     Voyager::routes();
+    // Route::post('login', [CustomLoginController::class, 'login']);
 });
 Route::view('/{any}', 'welcome')->where('any', '.*');

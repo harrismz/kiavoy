@@ -56,22 +56,16 @@ export default {
         };
     },
     methods: {
-        // async login() {
-        //     try {
-        //         const response = await axios.post('/login', {
-        //             email: this.email,
-        //             password: this.password
-        //         });
-        //         if (response.data.success) {
-        //             window.location.href = '/admin';
-        //         } else {
-        //             alert('Login failed. Please check your credentials.');
-        //         }
-        //     } catch (error) {
-        //         console.error('An error occurred:', error);
-        //         alert('Login failed. Please try again.');
-        //     }
-        // }
+        async login() {
+            try {
+                const response = await axios.post(window.routeUrl.login, this.form);
+                localStorage.setItem('user', JSON.stringify(response.data));
+                window.location.href = '/admin'; // Redirect to admin dashboard after login
+            } catch (error) {
+                this.error = 'Invalid credentials';
+                console.error(error);
+            }
+        }
     }
 };
 </script>
