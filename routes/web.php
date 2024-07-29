@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+// use App\Http\Controllers\Auth\CustomLoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,12 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('app');
-})
-->name('application');
+// Route::get('/', function () {
+//     return view('app');
+// })
+// ->name('application');
 
 
 Route::group(['prefix' => 'admin'], function () {
+    // Route::post('login', [CustomLoginController::class, 'login']);
     Voyager::routes();
 });
+Route::view('/{any}', 'welcome')->where('any', '.*');

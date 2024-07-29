@@ -1,9 +1,13 @@
 import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
 import laravel from 'laravel-vite-plugin';
 
-import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
+    // resolve: name => {
+    //     const pages = import.meta.glob('./Pages/**/*.vue', { eager: true })
+    //     return pages[`./Pages/${name}.vue`]
+    // },
     plugins: [
         vue(),
         laravel({
