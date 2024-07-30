@@ -21,8 +21,17 @@ use App\Http\Controllers\ConfigController;
 // })
 // ->name('application');
 
-Route::get('/check-auth', function () {
-    return Auth::check() ? 'Authenticated' : 'Not Authenticated';
+// Route::get('/', function () {
+//     if(!Auth::check()){
+//         return redirect('/admin/login');
+//     }
+//     return redirect('/');
+//     // return redirect()->intended('/');
+//     // return Auth::check() ? 'Authenticated' : 'Not Authenticated';
+// });
+
+Route::get('/check-auth', function(){
+    return Auth::check()? 'Authenticated' : 'Not Authenticated';
 });
 
 Route::get('/user', function () {
