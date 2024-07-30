@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ConfigController;
 // use App\Http\Controllers\Auth\CustomLoginController;
 
 /*
@@ -23,20 +25,27 @@ Route::get('/check-auth', function () {
     return Auth::check() ? 'Authenticated' : 'Not Authenticated';
 });
 
-Auth::routes();
+Route::get('/user', function () {
+    return response()->json([
+        'user' => Auth::guard('web')->user(), // Menggunakan guard 'web'
+    ]);
+})->middleware('admin.user'); // Middleware 'admin.user' dari Voyager
 
-// Route::get('/login', function () {
-//     return view('auth.login');
-// })->name('login');
+Route::get('/config', [ConfigController::class, 'getAppUrl']);
 
-// Route::post('/login', [CustomLoginController::class, 'login']);
+// Auth::routes();
 
-Route::redirect('/login', '/admin/login');
+// // Route::get('/login', function () {
+// //     return view('auth.login');
+// // })->name('login');
 
-Route::group(['prefix' => 'admin',
-    'middleware' => 'auth'], function () {
+// // Route::post('/login', [CustomLoginController::class, 'login']);
+
+// // Route::redirect('/login', '/admin/login');
+
+Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
-    // Route::post('login', [CustomLoginController::class, 'login']);
+    Route::post('/logout',[AuthenticatedSessionController::class, 'destroy'])->name('logout');
 });
 
-Route::view('/{any}', 'welcome')->where('any', '.*')->middleware('auth');
+Route::view('/{any}', 'welcome')->where('any', '.*');

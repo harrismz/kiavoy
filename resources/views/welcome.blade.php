@@ -14,8 +14,7 @@
 
     <script>
         window.routeUrl = {
-            login: "{{ route('voyager.login') }}",
-            logout:"{{ route('voyager.logout') }}"
+            login: "{{ route('voyager.login') }}"
         };
     </script>
 </head>

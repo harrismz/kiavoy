@@ -7,7 +7,7 @@
                     <!-- <router-link to="/dashboard" class="mr-4">Dashboard</router-link> -->
                     <router-link to="/" class="mr-4">Profile</router-link>
                     <div class="relative" @click="toggleDropdown">
-                        <img :src="user.profilePicture" alt="Profile Picture"
+                        <img :src="user.avatar" alt="Profile Picture"
                             class="rounded-full w-10 h-10 cursor-pointer">
                         <ul v-if="dropdownOpen"
                             class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg">

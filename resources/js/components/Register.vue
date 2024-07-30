@@ -1,16 +1,13 @@
 <template>
     <div class="min-h-screen flex items-center justify-center bg-gray-100">
         <div class="flex w-full max-w-4xl shadow-md rounded-lg overflow-hidden">
-            <div class="w-1/2 bg-gray-200 flex items-center justify-center">
+            <div class="w-1/3 bg-gray-200 flex items-center justify-center">
                 <div>
-                    <!-- <img src="http://localhost:8000/storage/users/July2024/5EBVXVtkaXZtpxHTUFxL.png" alt="Logo"
-                        class="w-32 h-32 mb-4"> -->
-                    <img src="http://localhost:8000/storage/settings/July2024/v1SNW071gmIWJmDqqIdh.png" alt="Image"
-                        class="w-full h-full object-cover">
+                    <img :src="imgLogo" alt="Image" class="w-full h-full object-cover">
                 </div>
             </div>
 
-            <div class="w-1/2 p-8 bg-white">
+            <div class="w-2/3 p-8 bg-white">
                 <h2 class="text-2xl font-bold mb-6 text-center">DAFTAR AKUN</h2>
                 <p class="mb-6 text-center">Buat akun untuk dapat mengakses semua fitur KIA</p>
                 <form @submit.prevent="register">
@@ -48,39 +45,53 @@
     </div>
 </template>
 
-<script>
-import { reactive } from 'vue';
-import axios from 'axios';
+<script setup>
+import { reactive, computed, onMounted } from 'vue';
+import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
+import toastr from 'toastr';
 
-export default {
-    setup() {
-        const router = useRouter();
-        const baseUrl = document.querySelector('meta[name="base-url"]').getAttribute('content');
-        const form = reactive({
-            nik: '',
-            name: '',
-            email: '',
-            password: ''
-        });
+const store = useStore();
+const router = useRouter();
 
-        const register = async () => {
-            try {
-                const response = await axios.post(baseUrl + '/api/register', form);
-                console.log("creating", response.data);
-                router.push('/identitas-ibu');
-            } catch (error) {
-                console.error(error);
-                // Tangani error jika terjadi
-            }
-        };
+const imgLogo = computed(() => store.getters.imgLogo);
+const user = computed(() => store.getters.user);
+const baseUrl = computed(() => store.getters.baseUrl);
 
-        return {
-            form,
-            register
-        };
+const form = reactive({
+    nik: '',
+    name: '',
+    email: '',
+    password: ''
+});
+
+const register = async () => {
+    // console.log({ baseUrl: baseUrl.value });
+    try {
+        const response = await axios.post(`${baseUrl.value}/api/register`, form);
+        console.log("creating", response.data);
+        toastr.success('Akun berhasil dibuat!');
+        router.push('/identitas-ibu', response.data);
+    } catch (error) {
+        console.error({erorr: error.response?.data});
+        // Ambil pesan error dari response.data jika tersedia
+        const errors = error.response?.data || [];
+        if (Array.isArray(errors)) {
+            errors.forEach((message) => {
+                toastr.error(message); // Menampilkan setiap pesan error
+                console.log({message})
+            });
+        } else {
+            toastr.error('Gagal membuat akun. Silakan coba lagi.'); // Pesan default jika tidak ada errors
+        }
     }
 };
+
+onMounted(() => {
+    store.dispatch('fetchBaseUrl');
+    store.dispatch('fetchUser');
+    store.dispatch('fetchLogo');
+});
 </script>
 
 <style scoped>

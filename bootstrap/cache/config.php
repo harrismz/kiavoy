@@ -1,16 +1,16 @@
 <?php return array (
   'app' => 
   array (
-    'name' => 'KIA Digital',
+    'name' => 'Laravel',
     'env' => 'local',
     'debug' => true,
-    'url' => 'http://localhost:8000',
+    'url' => 'kiavoy.test',
     'asset_url' => '/',
     'timezone' => 'UTC',
     'locale' => 'en',
     'fallback_locale' => 'en',
     'faker_locale' => 'en_US',
-    'key' => 'base64:os/LbNXDw03FuesOxtMaqjGONlRnM5hWB2xtXsXeHdY=',
+    'key' => 'base64:h0oYuiB2Y4uh5KMemVZr3kTxHwNcgV35WwHWjbuRjXY=',
     'cipher' => 'AES-256-CBC',
     'maintenance' => 
     array (
@@ -197,7 +197,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'E:\\laragon\\www\\php81\\kiavoyager\\storage\\framework/cache/data',
+        'path' => 'D:\\laragon\\www\\php81\\kiavoy\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -241,7 +241,7 @@
         'driver' => 'octane',
       ),
     ),
-    'prefix' => 'kia_digital_cache_',
+    'prefix' => 'laravel_cache_',
   ),
   'cors' => 
   array (
@@ -340,7 +340,7 @@
       'options' => 
       array (
         'cluster' => 'redis',
-        'prefix' => 'kia_digital_database_',
+        'prefix' => 'laravel_database_',
       ),
       'default' => 
       array (
@@ -370,14 +370,14 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'E:\\laragon\\www\\php81\\kiavoyager\\storage\\app',
+        'root' => 'D:\\laragon\\www\\php81\\kiavoy\\storage\\app',
         'throw' => false,
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'E:\\laragon\\www\\php81\\kiavoyager\\storage\\app/public',
-        'url' => 'http://localhost:8000/storage',
+        'root' => 'D:\\laragon\\www\\php81\\kiavoy\\storage\\app/public',
+        'url' => 'kiavoy.test/storage',
         'visibility' => 'public',
         'throw' => false,
       ),
@@ -396,7 +396,93 @@
     ),
     'links' => 
     array (
-      'E:\\laragon\\www\\php81\\kiavoyager\\public\\storage' => 'E:\\laragon\\www\\php81\\kiavoyager\\storage\\app/public',
+      'D:\\laragon\\www\\php81\\kiavoy\\public\\storage' => 'D:\\laragon\\www\\php81\\kiavoy\\storage\\app/public',
+    ),
+  ),
+  'fortify-options' => 
+  array (
+    'two-factor-authentication' => 
+    array (
+      'confirm' => true,
+      'confirmPassword' => true,
+    ),
+  ),
+  'fortify' => 
+  array (
+    'guard' => 'web',
+    'middleware' => 
+    array (
+      0 => 'web',
+    ),
+    'auth_middleware' => 'auth',
+    'passwords' => 'users',
+    'username' => 'email',
+    'email' => 'email',
+    'views' => true,
+    'home' => '/dashboard',
+    'prefix' => '',
+    'domain' => NULL,
+    'lowercase_usernames' => true,
+    'limiters' => 
+    array (
+      'login' => 'login',
+      'two-factor' => 'two-factor',
+    ),
+    'paths' => 
+    array (
+      'login' => NULL,
+      'logout' => NULL,
+      'password' => 
+      array (
+        'request' => NULL,
+        'reset' => NULL,
+        'email' => NULL,
+        'update' => NULL,
+        'confirm' => NULL,
+        'confirmation' => NULL,
+      ),
+      'register' => NULL,
+      'verification' => 
+      array (
+        'notice' => NULL,
+        'verify' => NULL,
+        'send' => NULL,
+      ),
+      'user-profile-information' => 
+      array (
+        'update' => NULL,
+      ),
+      'user-password' => 
+      array (
+        'update' => NULL,
+      ),
+      'two-factor' => 
+      array (
+        'login' => NULL,
+        'enable' => NULL,
+        'confirm' => NULL,
+        'disable' => NULL,
+        'qr-code' => NULL,
+        'secret-key' => NULL,
+        'recovery-codes' => NULL,
+      ),
+    ),
+    'redirects' => 
+    array (
+      'login' => NULL,
+      'logout' => NULL,
+      'password-confirmation' => NULL,
+      'register' => NULL,
+      'email-verification' => NULL,
+      'password-reset' => NULL,
+    ),
+    'features' => 
+    array (
+      0 => 'registration',
+      1 => 'reset-passwords',
+      2 => 'update-profile-information',
+      3 => 'update-passwords',
+      4 => 'two-factor-authentication',
     ),
   ),
   'hashing' => 
@@ -439,13 +525,13 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => 'E:\\laragon\\www\\php81\\kiavoyager\\storage\\logs/laravel.log',
+        'path' => 'D:\\laragon\\www\\php81\\kiavoy\\storage\\logs/laravel.log',
         'level' => 'debug',
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => 'E:\\laragon\\www\\php81\\kiavoyager\\storage\\logs/laravel.log',
+        'path' => 'D:\\laragon\\www\\php81\\kiavoy\\storage\\logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
       ),
@@ -497,7 +583,7 @@
       ),
       'emergency' => 
       array (
-        'path' => 'E:\\laragon\\www\\php81\\kiavoyager\\storage\\logs/laravel.log',
+        'path' => 'D:\\laragon\\www\\php81\\kiavoy\\storage\\logs/laravel.log',
       ),
     ),
   ),
@@ -556,14 +642,14 @@
     'from' => 
     array (
       'address' => 'hello@example.com',
-      'name' => 'KIA Digital',
+      'name' => 'Laravel',
     ),
     'markdown' => 
     array (
       'theme' => 'default',
       'paths' => 
       array (
-        0 => 'E:\\laragon\\www\\php81\\kiavoyager\\resources\\views/vendor/mail',
+        0 => 'D:\\laragon\\www\\php81\\kiavoy\\resources\\views/vendor/mail',
       ),
     ),
   ),
@@ -630,7 +716,7 @@
       2 => '127.0.0.1',
       3 => '127.0.0.1:8000',
       4 => '::1',
-      5 => 'localhost:8000',
+      5 => '',
     ),
     'guard' => 
     array (
@@ -670,7 +756,7 @@
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'E:\\laragon\\www\\php81\\kiavoyager\\storage\\framework/sessions',
+    'files' => 'D:\\laragon\\www\\php81\\kiavoy\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -679,7 +765,7 @@
       0 => 2,
       1 => 100,
     ),
-    'cookie' => 'kia_digital_session',
+    'cookie' => 'laravel_session',
     'path' => '/',
     'domain' => NULL,
     'secure' => NULL,
@@ -690,9 +776,9 @@
   array (
     'paths' => 
     array (
-      0 => 'E:\\laragon\\www\\php81\\kiavoyager\\resources\\views',
+      0 => 'D:\\laragon\\www\\php81\\kiavoy\\resources\\views',
     ),
-    'compiled' => 'E:\\laragon\\www\\php81\\kiavoyager\\storage\\framework\\views',
+    'compiled' => 'D:\\laragon\\www\\php81\\kiavoy\\storage\\framework\\views',
   ),
   'voyager' => 
   array (
@@ -842,7 +928,7 @@
       'ensure_pages_exist' => true,
       'page_paths' => 
       array (
-        0 => 'E:\\laragon\\www\\php81\\kiavoyager\\resources\\js/Pages',
+        0 => 'D:\\laragon\\www\\php81\\kiavoy\\resources\\js/Pages',
       ),
       'page_extensions' => 
       array (
@@ -939,7 +1025,7 @@
     array (
     ),
     'enable_runnable_solutions' => NULL,
-    'remote_sites_path' => 'E:\\laragon\\www\\php81\\kiavoyager',
+    'remote_sites_path' => 'D:\\laragon\\www\\php81\\kiavoy',
     'local_sites_path' => '',
     'housekeeping_endpoint_prefix' => '_ignition',
     'settings_file_path' => '',

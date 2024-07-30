@@ -61,7 +61,7 @@
 <body>
     <div class="login-container">
         <div class="login-image">
-            <img src="{{ url("/storage/settings/July2024/v1SNW071gmIWJmDqqIdh.png") }}" alt="Logo">
+            <img src="{{ url("/storage/images/buku_kia.png") }}" alt="Logo">
         </div>
         <div class="login-form">
             <h2>Login</h2>
@@ -82,7 +82,7 @@
                 <button type="submit" class="btn btn-primary">Login</button>
             </form>
             <div class="text-center">
-                <p>Belum punya akun? <a href="#">Buat akun sekarang</a></p>
+                <p>Belum punya akun? <a href="{{ url('/registration') }}">Buat akun sekarang</a></p>
             </div>
         </div>
     </div>

@@ -4,8 +4,7 @@
             <div class="w-1/2 bg-gray-200 flex items-center justify-center">
                 <div>
                     <!-- <img src="http://localhost:8000/storage/images/logo.png" alt="Logo" class="w-32 h-32 mb-4"> -->
-                    <img :src="`${baseUrl}/storage/images/ibu dan anak.jpg`" alt="Image"
-                        class="w-full h-full object-cover">
+                    <img :src="imageRegister" alt="Image" class="w-full h-full object-cover">
                 </div>
             </div>
             <div class="w-1/2 p-8 bg-white">
@@ -167,6 +166,8 @@ export default {
             pekerjaan: ''
         });
 
+        const imageRegister = ref('');
+
         const bloodTypeList = ref([]);
         const kelurahanList = ref([]);
         const kecamatanList = ref([]);
@@ -174,8 +175,12 @@ export default {
         // const provinceList = ref([]);
         const educationList = ref([]);
         const jobList = ref([]);
+
         const baseUrl = document.querySelector('meta[name="base-url"]').getAttribute('content');
 
+        const fetchImageRegister = () => {
+            imageRegister.value = store.getters.logo;
+        }
 
         const fetchKelurahan = async () => {
             try {
@@ -261,9 +266,12 @@ export default {
             fetchBloodTypes();
             fetchEducations();
             fetchJobs();
+            fetchImageRegister();
+
         });
 
         return {
+            imageRegister,
             form,
             kelurahanList,
             bloodTypeList,

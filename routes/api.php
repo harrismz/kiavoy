@@ -7,6 +7,7 @@ use App\Http\Controllers\LocationController;
 use App\Http\Controllers\BloodTypeController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\JobController;
+// use App\Http\Controllers\ConfigController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,7 @@ use App\Http\Controllers\JobController;
 
 
 Route::post('/register', [AuthController::class, 'register']);
+// Route::get('/config', [ConfigController::class, 'getAppUrl']);
 Route::get('/kelurahan', [LocationController::class, 'getKelurahan']);
 Route::get('/kecamatan/{id}', [LocationController::class, 'getKecamatan']);
 Route::get('/provinsi/{id}', [LocationController::class, 'getProvince']);

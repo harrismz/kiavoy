@@ -5,5 +5,9 @@ import store from './store';
 
 import './bootstrap';
 import 'tailwindcss/tailwind.css';
+import 'toastr/build/toastr.min.css'; 
 
-createApp(App).use(router).use(store).mount('#app');
+const app = createApp(App);
+app.use(router);
+app.use(store);
+app.mount('#app');

@@ -23,6 +23,9 @@
 <script>
 import Stepper from '../utils/Stepper.vue';
 import ProfileCard from '../utils/ProfileCard.vue';
+import { useStore } from 'vuex';
+
+const store = useStore();
 
 export default {
     components: {
