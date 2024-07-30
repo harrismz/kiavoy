@@ -16,14 +16,14 @@ const routes = [
             layout: 'LoginLayout'
         }
     },
-    {
-        path: '/login',
-        name: 'login',
-        component: Login,
-        meta: {
-            layout: 'LoginLayout'
-        }
-    },
+    // {
+    //     path: '/admin/login',
+    //     name: 'login',
+    //     // component: Login,
+    //     // meta: {
+    //     //     layout: 'LoginLayout'
+    //     // }
+    // },
     {
         path: '/qr-code',
         name: 'QRCode',

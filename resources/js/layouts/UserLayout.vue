@@ -47,10 +47,24 @@ export default {
         toggleDropdown() {
             this.dropdownOpen = !this.dropdownOpen;
         },
+        // logout() {
+        //     // Tambahkan logika logout di sini, misalnya dengan memanggil API logout
+        //     axios.post(window.routeUrl.logout);
+        //     console.log('Logout');
+        // }
         logout() {
-            // Tambahkan logika logout di sini, misalnya dengan memanggil API logout
-            axios.post(window.routeUrl.logout);
-            console.log('Logout');
+            try {
+                // Kirim request POST ke endpoint logout
+                axios.post('/admin/logout', {}, {
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    }
+                });
+                // Redirect atau update status setelah logout
+                window.location.href = '/admin/login'; // Ganti dengan URL login jika diperlukan
+            } catch (error) {
+                console.error('Logout error:', error);
+            }
         }
     }
 }

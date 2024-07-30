@@ -19,11 +19,28 @@ use Illuminate\Support\Facades\Route;
 // })
 // ->name('application');
 
-Route::get('/check-auth', function () {
-    return Auth::check() ? 'Authenticated' : 'Not Authenticated';
+// Route::get('/', function () {
+//     if(!Auth::check()){
+//         return redirect('/admin/login');
+//     }
+//     return redirect('/');
+//     // return redirect()->intended('/');
+//     // return Auth::check() ? 'Authenticated' : 'Not Authenticated';
+// });
+
+Route::get('/check-auth', function(){
+    return Auth::check()? 'Authenticated' : 'Not Authenticated';
 });
 
-Auth::routes();
+
+
+// if(Auth::check()){
+//     Route::get('/',function(){});
+// }
+// else{
+//     Route::redirect('/', '/admin/login', 301);
+// }
+
 
 // Route::get('/login', function () {
 //     return view('auth.login');
@@ -31,12 +48,15 @@ Auth::routes();
 
 // Route::post('/login', [CustomLoginController::class, 'login']);
 
-Route::redirect('/login', '/admin/login');
 
-Route::group(['prefix' => 'admin',
-    'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
+    // Route::get('/login',function (){
+    //     return view('vendor.voyager.login');
+    // });
     // Route::post('login', [CustomLoginController::class, 'login']);
 });
+
+Auth::routes();
 
 Route::view('/{any}', 'welcome')->where('any', '.*')->middleware('auth');
