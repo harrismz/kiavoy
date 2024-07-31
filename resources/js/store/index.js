@@ -44,7 +44,6 @@ const store = createStore({
             }
         },
         async fetchLogo({ commit }) {
-            // commit('setLogo', './storage/app/public/images/buku_kia.png');
             try {
                 const response = await axios.get('/config');
                 commit('setLogo', response.data.baseUrl + '/storage/images/buku_kia.png');

@@ -6,57 +6,52 @@
                     <img :src="imgLogo.value" alt="Image" class="w-full h-full object-cover">
                 </div>
             </div>
-            <h1>Identitas Ibu</h1>
-            <p>NIK: {{ nik }}</p>
-            <p>name: {{ name }}</p>
-            <p>email: {{ email }}</p>
-            <p>id: {{ user_id }}</p>
             <div class="w-1/2 p-8 bg-white">
-                <h2 class="text-2xl font-bold mb-6 text-center">IDENTITAS IBU</h2>
-                <form @submit.prevent="submitIdentitasIbu">
+                <h2 class="text-2xl font-bold mb-6 text-center">IDENTITAS AYAH</h2>
+                <form @submit.prevent="submitIdentitasAyah">
                     <div class="mb-4">
-                        <label for="namaIbu" class="block text-sm font-medium text-gray-700">Nama Ibu</label>
-                        <input v-model="formIdentitasIbu.namaIbu" type="text" id="namaIbu"
+                        <label for="namaIbu" class="block text-sm font-medium text-gray-700">Nama Ayah</label>
+                        <input v-model="formIdentitasAyah.nama" type="text" id="namaIbu"
                             class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                             required />
                     </div>
                     <div class="mb-4">
                         <label for="nik" class="block text-sm font-medium text-gray-700">Nomor Induk
                             Kependudukan</label>
-                        <input v-model="formIdentitasIbu.nik" type="text" id="nik"
+                        <input v-model="formIdentitasAyah.nik" type="text" id="nik"
                             class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                             required />
                     </div>
 
                     <div class="mb-4">
                         <label for="tempatLahir" class="block text-sm font-medium text-gray-700">Tempat Lahir</label>
-                        <input v-model="formIdentitasIbu.tempatLahir" type="text" id="tempatLahir"
+                        <input v-model="formIdentitasAyah.tempatLahir" type="text" id="tempatLahir"
                             class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                             required />
                     </div>
                     <div class="mb-4">
                         <label for="tanggalLahir" class="block text-sm font-medium text-gray-700">Tanggal Lahir</label>
-                        <input v-model="formIdentitasIbu.tanggalLahir" type="date" id="tanggalLahir"
+                        <input v-model="formIdentitasAyah.tanggalLahir" type="date" id="tanggalLahir"
                             class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                             required />
                     </div>
                     <div class="mb-4">
                         <label for="phoneNumber" class="block text-sm font-medium text-gray-700">Nomor Jaminan Kesehatan
                             Nasional</label>
-                        <input v-model="formIdentitasIbu.phoneNumber" type="text" id="phoneNumber"
+                        <input v-model="formIdentitasAyah.phoneNumber" type="text" id="phoneNumber"
                             class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                             required />
                     </div>
                     <div class="mb-4">
                         <label for="tinggi" class="block text-sm font-medium text-gray-700">Tinggi</label>
-                        <input v-model="formIdentitasIbu.tinggi" type="number" id="tinggi"
+                        <input v-model="formIdentitasAyah.tinggi" type="number" id="tinggi"
                             class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                             required />
                     </div>
                     <div class="mb-4">
                         <label for="golonganDarah" class="block text-sm font-medium text-gray-700">Golongan
                             Darah</label>
-                        <select v-model="formIdentitasIbu.golonganDarah" id="golonganDarah"
+                        <select v-model="formIdentitasAyah.golonganDarah" id="golonganDarah"
                             class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                             required>
                             <option value="" disabled>Pilih Golongan Darah</option>
@@ -68,13 +63,13 @@
                     </div>
                     <div class="mb-4">
                         <label for="alamat" class="block text-sm font-medium text-gray-700">Alamat</label>
-                        <input v-model="formIdentitasIbu.alamat" type="text" id="alamat"
+                        <input v-model="formIdentitasAyah.alamat" type="text" id="alamat"
                             class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                             required />
                     </div>
                     <div class="mb-4">
                         <label for="kelurahan" class="block text-sm font-medium text-gray-700">Kelurahan</label>
-                        <select v-model="formIdentitasIbu.kelurahan" id="kelurahan"
+                        <select v-model="formIdentitasAyah.kelurahan" id="kelurahan"
                             class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                             @change="updateKecamatan" required>
                             <option value="" disabled>Pilih Kelurahan</option>
@@ -85,7 +80,7 @@
                     </div>
                     <div class="mb-4">
                         <label for="kecamatan" class="block text-sm font-medium text-gray-700">kecamatan</label>
-                        <select v-model="formIdentitasIbu.kecamatan" id="kecamatan"
+                        <select v-model="formIdentitasAyah.kecamatan" id="kecamatan"
                             class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                             required>
                             <option value="" disabled>Pilih kecamatan</option>
@@ -96,7 +91,7 @@
                     </div>
                     <div class="mb-4">
                         <label for="religion" class="block text-sm font-medium text-gray-700">religion</label>
-                        <select v-model="formIdentitasIbu.religion" id="religion"
+                        <select v-model="formIdentitasAyah.religion" id="religion"
                             class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                             required>
                             <option value="" disabled>Pilih Agama</option>
@@ -107,7 +102,7 @@
                     </div>
                     <div class="mb-4">
                         <label for="pendidikan" class="block text-sm font-medium text-gray-700">Pendidikan</label>
-                        <select v-model="formIdentitasIbu.pendidikan" id="pendidikan"
+                        <select v-model="formIdentitasAyah.pendidikan" id="pendidikan"
                             class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                             required>
                             <option value="" disabled>Pilih Pendidikan</option>
@@ -118,7 +113,7 @@
                     </div>
                     <div class="mb-4">
                         <label for="pekerjaan" class="block text-sm font-medium text-gray-700">Pekerjaan</label>
-                        <select v-model="formIdentitasIbu.pekerjaan" id="pekerjaan"
+                        <select v-model="formIdentitasAyah.pekerjaan" id="pekerjaan"
                             class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                             required>
                             <option value="" disabled>Pilih Pekerjaan</option>
@@ -140,7 +135,7 @@
 <script setup>
 import { reactive, computed, onMounted, ref } from 'vue';
 import { useStore } from 'vuex';
-import { useRoute } from 'vue-router';
+import { useRouter } from 'vue-router';
 import toastr from 'toastr';
 
 toastr.options = {
@@ -162,15 +157,10 @@ toastr.options = {
 };
 
 const store = useStore();
-const route = useRoute();
+const router = useRouter();
 
 const imgLogo = computed(() => store.getters.imgLogo);
 const baseUrl = computed(() => store.getters.baseUrl);
-
-const user_id = computed(() => route.params.id);
-const nik = computed(() => route.params.nik);
-const name = computed(() => route.params.name);
-const email = computed(() => route.params.email);
 
 const bloodTypeList = ref([]);
 const kelurahanList = ref([]);
@@ -179,37 +169,32 @@ const educationList = ref([]);
 const jobList = ref([]);
 const religionList = ref([]);
 
-const formIdentitasIbu = reactive({
+const formIdentitasAyah = reactive({
     nik: '',
     noJkn: '',
-    namaIbu: '',
-    tanggalLahir: '',
-    tempatLahir: '',
+    nama: '',
     phoneNumber: '',
+    tempatLahir: '',
+    tanggalLahir: '',
+    religion: '',
+    tinggi: '',
+    golonganDarah: '',
     alamat: '',
     kelurahan: '',
     kecamatan: '',
-    religion: '',
     pendidikan: '',
-    golonganDarah: '',
     pekerjaan: '',
-    tinggi: '',
     user_id: '',
 
 });
 
-const submitIdentitasIbu = async () => {
+
+
+const submitIdentitasAyah = async () => {
     try {
-        const response = await axios.post(`${baseUrl.value}/api/identitas-ibu`, formIdentitasIbu);
-        if (response && response.data) {
-            console.log("creating", response.data);
-            console.log("User data:", response.data.user);
-        }
-        toastr.success('Identitas Ibu Berhasil disimpan.');
-
-
-
-
+        const response = await axios.post(`${baseUrl.value}/api/identitas-ibu`, formIdentitasAyah);
+        console.log("creating", response.data);
+        toastr.success('Identitas Ayah Berhasil disimpan.');
         // router.push('/identitas-ayah', response.data);
         // Handle the next step or redirect
     } catch (error) {
@@ -219,8 +204,6 @@ const submitIdentitasIbu = async () => {
 }
 
 const fetchKelurahan = async () => {
-
-    console.log(route.params);
     try {
         const response = await axios.get(`${baseUrl.value}/api/kelurahan`);
         kelurahanList.value = response.data;
@@ -265,6 +248,7 @@ const fetchReligion = async () => {
         const religionResponse = await axios.get(`${baseUrl.value}/api/religion`);
         religion.value = religionResponse.data;
         console.log({ religion });
+        console.log({ baseUrl });
     } catch (error) {
         console.error('Error fetching religion:', error);
     }
@@ -272,7 +256,7 @@ const fetchReligion = async () => {
 
 const updateKecamatan = async () => {
     try {
-        const selectedKelurahan = await axios.get(`${baseUrl.value}/api/kecamatan/${formIdentitasIbu.kelurahan}`);
+        const selectedKelurahan = await axios.get(`${baseUrl.value}/api/kecamatan/${formIdentitasAyah.kelurahan}`);
         kecamatanList.value = selectedKelurahan.data;
         console.log({ kecamatanList });
     } catch (error) {

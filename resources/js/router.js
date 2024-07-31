@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Login from './components/Login.vue';
 import Registration from './components/Register.vue';
 import IdentitasIbu from './components/Ibu/IdentitasIbu.vue';
+import IdentitasAyah from './components/Ayah/IdentitasAyah.vue';
 import Profile from './components/Ibu/Profile.vue';
 import HealthRecordIbu from './components/Ibu/HealthRecord.vue';
 import QRCode from './components/utils/QRCode.vue';
@@ -27,7 +28,18 @@ const routes = [
     // IBU
     {
         path: '/identitas-ibu',
+        name: 'identitas-ibu',
         component: IdentitasIbu,
+        props: true,
+        meta: {
+            layout: 'LoginLayout'
+        }
+    },
+    {
+        path: '/identitas-ayah',
+        name: 'identitas-ayah',
+        component: IdentitasAyah,
+        props: true,
         meta: {
             layout: 'LoginLayout'
         }
@@ -44,7 +56,8 @@ const routes = [
     {
         path: '/health-record-ibu',
         name: 'HealthRecordIbu',
-        component: HealthRecordIbu, meta: {
+        component: HealthRecordIbu,
+        meta: {
             layout: 'UserLayout',
             requiresAuth: true
         }

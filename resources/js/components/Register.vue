@@ -60,9 +60,9 @@ toastr.options = {
     "preventDuplicates": false,
     "onclick": null,
     "showDuration": "300",
-    "hideDuration": "1000",
-    "timeOut": "5000",
-    "extendedTimeOut": "1000",
+    "hideDuration": "3000",
+    "timeOut": "7000",
+    "extendedTimeOut": "2000",
     "showEasing": "swing",
     "hideEasing": "linear",
     "showMethod": "fadeIn",
@@ -86,9 +86,22 @@ const register = async () => {
     // console.log({ baseUrl: baseUrl.value });
     try {
         const response = await axios.post(`${baseUrl.value}/api/register`, form);
-        console.log("creating", response.data);
+        if (response && response.data) {
+            console.log("creating", response.data);
+            console.log("User data:", response.data.user);
+        }
         toastr.success('Akun berhasil dibuat!');
-        router.push('/identitas-ibu', response.data);
+
+        router.push({
+            name: 'identitas-ibu',
+            params: {
+                id: response.data.user.id.toString(),
+                nik: response.data.user.nik.toString(),
+                name: response.data.user.name.toString(),
+                email: response.data.user.email.toString(),
+            }
+        })
+
     } catch (error) {
         console.error({ erorr: error.response.data });
 
@@ -102,19 +115,6 @@ const register = async () => {
                 }
             }
         }
-
-
-
-        // Ambil pesan error dari response.data jika tersedia
-        // const errors = error.response.data || [];
-        // if (Array.isArray(errors)) {
-        //     errors.forEach((message) => {
-        //         toastr.error(message); // Menampilkan setiap pesan error
-        //         console.log({message})
-        //     });
-        // } else {
-        //     toastr.error('Gagal membuat akun. Silakan coba lagi.'); // Pesan default jika tidak ada errors
-        // }
     }
 };
 
