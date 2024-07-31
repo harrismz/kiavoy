@@ -5,7 +5,6 @@ import IdentitasIbu from './components/Ibu/IdentitasIbu.vue';
 import Profile from './components/Ibu/Profile.vue';
 import HealthRecordIbu from './components/Ibu/HealthRecord.vue';
 import QRCode from './components/utils/QRCode.vue';
-import UserLayout from './layouts/UserLayout.vue';
 
 const routes = [
     {
@@ -16,14 +15,6 @@ const routes = [
             layout: 'LoginLayout'
         }
     },
-    // {
-    //     path: '/admin/login',
-    //     name: 'login',
-    //     // component: Login,
-    //     // meta: {
-    //     //     layout: 'LoginLayout'
-    //     // }
-    // },
     {
         path: '/qr-code',
         name: 'QRCode',
@@ -44,7 +35,8 @@ const routes = [
     {
         path: '/',
         name: 'Profile',
-        component: Profile, meta: {
+        component: Profile,
+        meta: {
             layout: 'UserLayout',
             requiresAuth: true
         }

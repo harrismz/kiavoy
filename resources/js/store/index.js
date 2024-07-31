@@ -38,7 +38,7 @@ const store = createStore({
         async fetchBaseUrl({ commit }) {
             try {
                 const response = await axios.get('/config');
-                commit('setBaseUrl', 'http://' + response.data.baseUrl);
+                commit('setBaseUrl', response.data.baseUrl);
             } catch (error) {
                 console.error('Error fetching baseUrl :', error);
             }
@@ -47,7 +47,7 @@ const store = createStore({
             // commit('setLogo', './storage/app/public/images/buku_kia.png');
             try {
                 const response = await axios.get('/config');
-                commit('setLogo', 'http://' + response.data.baseUrl + '/storage/images/buku_kia.png');
+                commit('setLogo', response.data.baseUrl + '/storage/images/buku_kia.png');
             } catch (error) {
                 console.error('Error fetching Logo :', error);
             }

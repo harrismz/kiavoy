@@ -51,11 +51,28 @@ import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
 import toastr from 'toastr';
 
+toastr.options = {
+    "closeButton": true,
+    "debug": false,
+    "newestOnTop": false,
+    "progressBar": true,
+    "positionClass": "toast-top-right",
+    "preventDuplicates": false,
+    "onclick": null,
+    "showDuration": "300",
+    "hideDuration": "1000",
+    "timeOut": "5000",
+    "extendedTimeOut": "1000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+};
+
 const store = useStore();
 const router = useRouter();
 
 const imgLogo = computed(() => store.getters.imgLogo);
-const user = computed(() => store.getters.user);
 const baseUrl = computed(() => store.getters.baseUrl);
 
 const form = reactive({
@@ -73,17 +90,31 @@ const register = async () => {
         toastr.success('Akun berhasil dibuat!');
         router.push('/identitas-ibu', response.data);
     } catch (error) {
-        console.error({erorr: error.response?.data});
-        // Ambil pesan error dari response.data jika tersedia
-        const errors = error.response?.data || [];
-        if (Array.isArray(errors)) {
-            errors.forEach((message) => {
-                toastr.error(message); // Menampilkan setiap pesan error
-                console.log({message})
-            });
-        } else {
-            toastr.error('Gagal membuat akun. Silakan coba lagi.'); // Pesan default jika tidak ada errors
+        console.error({ erorr: error.response.data });
+
+        if (error.response && error.response.data) {
+            const errors = error.response.data;
+            for (const key in errors) {
+                if (errors.hasOwnProperty(key)) {
+                    errors[key].forEach(message => {
+                        toastr.error(message);
+                    });
+                }
+            }
         }
+
+
+
+        // Ambil pesan error dari response.data jika tersedia
+        // const errors = error.response.data || [];
+        // if (Array.isArray(errors)) {
+        //     errors.forEach((message) => {
+        //         toastr.error(message); // Menampilkan setiap pesan error
+        //         console.log({message})
+        //     });
+        // } else {
+        //     toastr.error('Gagal membuat akun. Silakan coba lagi.'); // Pesan default jika tidak ada errors
+        // }
     }
 };
 
