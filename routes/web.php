@@ -33,28 +33,32 @@ use App\Http\Controllers\ConfigController;
 Route::get('/check-auth', function(){
     return Auth::check()? 'Authenticated' : 'Not Authenticated';
 });
-
+// Route::redirect('/', '/admin/login', 301);
 Route::get('/user', function () {
     return response()->json([
         'user' => Auth::guard('web')->user(), // Menggunakan guard 'web'
     ]);
-})->middleware('admin.user'); // Middleware 'admin.user' dari Voyager
+})->middleware('auth');
+// ->middleware('admin.user'); // Middleware 'admin.user' dari Voyager
 
 Route::get('/config', [ConfigController::class, 'getAppUrl']);
 
-// Auth::routes();
 
 // // Route::get('/login', function () {
 // //     return view('auth.login');
 // // })->name('login');
 
 // // Route::post('/login', [CustomLoginController::class, 'login']);
+// if(!Auth::check()){
+    // Route::redirect('/', '/admin/login');
+    // return;
+// }
 
-// // Route::redirect('/login', '/admin/login');
+Auth::routes();
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
-    Route::post('/logout',[AuthenticatedSessionController::class, 'destroy'])->name('logout');
+    // Route::post('/logout',[AuthenticatedSessionController::class, 'destroy'])->name('logout');
 });
 
 Route::view('/{any}', 'welcome')->where('any', '.*');

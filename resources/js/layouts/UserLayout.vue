@@ -5,9 +5,13 @@
                 <h1 class="text-xl font-bold">Logo</h1>
                 <nav class="flex items-center">
                     <!-- <router-link to="/dashboard" class="mr-4">Dashboard</router-link> -->
+                    <div v-if="userState != null">
+                        <p>Name: {{ userState.name }}</p>
+                        <p>Age: {{ userState.age }}</p>
+                    </div>
                     <router-link to="/" class="mr-4">Profile</router-link>
                     <div class="relative" @click="toggleDropdown">
-                        <img :src="user.avatar" alt="Profile Picture"
+                        <img v-if="userState != null" :src="userState.avatar" alt="Profile Picture"
                             class="rounded-full w-10 h-10 cursor-pointer">
                         <ul v-if="dropdownOpen"
                             class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg">
@@ -23,27 +27,46 @@
         </main>
         <footer class="bg-gray-800 text-white p-4">
             <div class="container mx-auto text-center">
-                &copy; 2024 Your Company
+                &copy; 2024 KIA Digital
             </div>
         </footer>
     </div>
 </template>
 
 <script>
-import { mapState } from 'vuex';
+// import { mapState } from 'vuex';
 import axios from 'axios';
 
 export default {
     name: 'UserLayout',
     data() {
         return {
-            dropdownOpen: false
+            dropdownOpen: false,
+            userState: null
         };
     },
-    computed: {
-        ...mapState(['user'])
+    // computed: {
+    //     // ...mapState(['user']),
+    //     userInfo() {
+    //         console.log(this.user); // Debugging untuk melihat data user
+    //         return this.user;
+    //     },
+    // },
+    mounted() {
+        console.log('mounting userlayout')
+        this.fetchAuthUser()
+        console.log('userlayout is mounted')
     },
     methods: {
+        fetchAuthUser() {
+            console.log('fetchAuthUser')
+            axios.get('/user')
+                .then(response => response.data)
+                .then(user => {
+                    console.log({ user })
+                    this.userState = user;
+                })
+        },
         toggleDropdown() {
             this.dropdownOpen = !this.dropdownOpen;
         },

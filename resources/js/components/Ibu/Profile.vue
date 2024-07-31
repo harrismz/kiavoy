@@ -23,9 +23,9 @@
 <script>
 import Stepper from '../utils/Stepper.vue';
 import ProfileCard from '../utils/ProfileCard.vue';
-import { useStore } from 'vuex';
+// import { useStore } from 'vuex';
 
-const store = useStore();
+// const store = useStore();
 
 export default {
     components: {
@@ -34,8 +34,10 @@ export default {
     },
     data() {
         return {
+            user: {},
+            mother: [],
             currentWeek: 0,
-            weeks: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+            weeks: [],
             cards: [
                 { title: 'Info Janin Secara Umum', description: 'Tinggi : xxx cm Berat : xxx cm Ukuran : xxx Ciri-ciri : xxx', link: '#' },
                 { title: 'Diary Ibu', description: 'Pemantauan mingguan, perawatan sehari-hari, serta keluhan yang dirasakan ibu dapat diisi secara mandiri dalam menu ini.', link: '#' },
@@ -45,6 +47,50 @@ export default {
                 { title: 'Riwayat Persalinan', description: 'Informasi seputar persalinan, kondisi bayi saat lahir, hingga asuhan bayi baru lahir (IMD dalam 1 jam pertama kelahiran) bisa dapat dilihat dalam menu ini.', link: '#' },
             ]
         };
+    },
+    methods: {
+        fetchUserAuth() {
+            axios.get('/user/')
+                .then(response => response.data)
+                .then(response => {
+                    this.user = response.user;
+                    console.log('fetching user : ', response.user);
+                })
+                .catch(error => {
+                    console.error(error);
+                    toastr.error(`fetching user ERROR : ${error}`)
+                });
+        },
+        fetchMother() {
+            const user_id = this.user.id;
+            axios.get(`/api/get_mother/${user_id}`)
+                .then(response => response.data)
+                .then(response => {
+                    console.log('fetching mother : ', response.data);
+                })
+        },
+        fetchWeekUser() {
+            const mother_id = this.mother.id
+            axios.get(`/api/get_week_user/${mother_id}`)
+                .then(response => response.data)
+                .then(response => {
+
+                    console.log('fetching week : ', response);
+                })
+                .catch(error => {
+                    console.error(error);
+                    toastr.error(`fetching week ERROR : ${error}`)
+                });
+
+        }
+    },
+    mounted() {
+        this.fetchUserAuth()
+            .then(() => this.fetchMother(this.user))
+            .then(() => this.fetchWeekUser(this.mother.id))
+            .catch(error => console.error('Error fetching data:', error));
+    // this.fetchWeekUser();
+    // this.fetchMother();
     }
 };
 </script>

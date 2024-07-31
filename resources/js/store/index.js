@@ -10,12 +10,15 @@ const store = createStore({
         },
     },
     getters: {
+        isAuthenticated(state) {
+            return !!state.user;  // Mengembalikan true jika user tidak null
+        },
         user: (state) => state.user,
         baseUrl: (state) => state.config.baseUrl,
         imgLogo: (state) => state.config.imgLogo,
     },
     mutations: {
-        setUser(state, user) {
+        SET_USER(state, user) {
             state.user = user;
         },
         setBaseUrl(state, url) {
@@ -24,17 +27,30 @@ const store = createStore({
         setLogo(state, imgLogo) {
             state.config.imgLogo = imgLogo;
         },
+        LOGOUT(state) {
+            state.user = null;
+        },
     },
 
     actions: {
+        // login({ commit }, user) {
+        //     // Implementasikan logika login, seperti panggilan API
+        //     commit('SET_USER', user);
+        // },
+        // logout({ commit }) {
+        //     commit('LOGOUT');
+        // },
         async fetchUser({ commit }) {
             try {
+                console.log('Fetching user...');  // Debugging
                 const response = await axios.get('/user');
-                commit('setUser', response.data.user);
+                console.log('User fetched:', response.data);  // Debugging
+                commit('SET_USER', response.data);
             } catch (error) {
-                console.error('Error fetching user :', error);
+                console.error('Error fetching user:', error);
             }
         },
+
         async fetchBaseUrl({ commit }) {
             try {
                 const response = await axios.get('/config');

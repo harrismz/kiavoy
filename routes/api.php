@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\IdentityController;
+use App\Http\Controllers\IbuController;
 // use App\Http\Controllers\ConfigController;
 
 /*
@@ -24,11 +25,15 @@ use App\Http\Controllers\IdentityController;
 
 
 Route::post('/register', [AuthController::class, 'register']);
-// Route::get('/config', [ConfigController::class, 'getAppUrl']);
+
 Route::get('/kelurahan', [LocationController::class, 'getKelurahan']);
 Route::get('/kecamatan/{id}', [LocationController::class, 'getKecamatan']);
 Route::get('/provinsi/{id}', [LocationController::class, 'getProvince']);
+
 Route::get('/pendidikan', [IdentityController::class, 'getEducation']);
 Route::get('/pekerjaan', [IdentityController::class, 'getJob']);
 Route::get('/blood-types', [IdentityController::class, 'getBloodType']);
 Route::get('/religion', [IdentityController::class, 'getReligion']);
+
+Route::get('/get_mother/{user_id}', [IbuController::class, 'index']);
+Route::get('/get_week_user', [IbuController::class, 'getWeek']);
