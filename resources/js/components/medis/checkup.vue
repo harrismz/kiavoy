@@ -4,7 +4,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <form class="form" action="#">
+                        <form class="form" action="/admin/checkup/show" method="GET">
                             <div class="form-group  mx-sm-3 mb-2 flex-grow-1">
                                 <label for="id">Check up</label>
                                 <input type="text" placeholder="input medical id : ID XXXXXX XXXX XXXXX " name="id" id="id" class="form-control">
