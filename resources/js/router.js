@@ -10,16 +10,20 @@ import QRCode from './components/utils/QRCode.vue';
 import UserLayout from './layouts/UserLayout.vue';
 import LoginLayout from './layouts/LoginLayout.vue';
 import MenuMedis from './components/medis/menu.vue';
+import Checkup from './components/medis/checkup.vue';
 
-const resolveComponentBasedOnRole = () => {
+const resolveComponentBasedOnRole = async () => {
     const userRole = store.state.user.role; // Assuming the user's role is stored in the Vuex store
 
     switch (userRole) {
         case 'ibu':
+            const { default: MenuMedis } = await import('./components/medis/menu.vue');
             return MenuMedis;
         case 'ayah':
+            const { default: IdentitasAyah } = await import('./components/Ayah/IdentitasAyah.vue');
             return IdentitasAyah;
         default:
+            const { default: IdentitasIbu } = await import('./components/Ibu/IdentitasIbu.vue');
             return IdentitasIbu;
     }
 }
@@ -61,6 +65,7 @@ const routes = [
             layout: 'LoginLayout'
         }
     },
+    // router teguh
     {
         path: '/admin',
         name: 'Profile',
@@ -70,6 +75,18 @@ const routes = [
             requiresAuth: true
         }
     },
+
+    {
+        path: '/admin/checkup',
+        name: 'checkup',
+        component: Checkup,
+        meta: {
+            layout: 'UserLayout',
+            requiresAuth: true
+        }
+    },
+    // end router teguh
+
     {
         path: '/health-record-ibu',
         name: 'HealthRecordIbu',

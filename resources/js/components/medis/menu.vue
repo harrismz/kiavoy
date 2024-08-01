@@ -25,7 +25,8 @@
                         </div>
                         <h5 class="card-title mt-3">Check Up</h5>
                         <p class="card-text">Menu check up sebagai catatan kesehatan ibu serta pertumbuhan anak yang diintegrasikan menggunakan QR code.</p>
-                        <a href="#" class="btn btn-primary">Selengkapnya &gt;</a>
+                        <!-- <a href="#" class="btn btn-primary">Selengkapnya &gt;</a> -->
+                        <router-link class="btn btn-primary" to="/admin/checkup">Selengkapnya &gt;</router-link>
                     </div>
                 </div>
             </div>

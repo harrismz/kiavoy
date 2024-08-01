@@ -61,4 +61,7 @@ Route::group(['prefix' => 'admin'], function () {
     // Route::post('/logout',[AuthenticatedSessionController::class, 'destroy'])->name('logout');
 });
 
-Route::view('/{any}', 'welcome')->where('any', '.*');
+// Route::view('/{any}', 'welcome')->where('any', '.*');
+Route::get('/{any}', function () {
+    return view('voyager::index'); // Ensure this is the correct view being used
+})->where('any', '.*')->middleware('admin.user');
