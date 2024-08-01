@@ -19,6 +19,13 @@
                                 Logout</li>
                         </ul>
                     </div>
+
+                    <button class="btn btn-success" @click="logout">
+                        logout {{ userState }}
+                    </button>
+
+                    <li class="block px-4 py-2 text-gray-800 hover:bg-gray-100 cursor-pointer" @click="logout">
+                        Logout</li>
                 </nav>
             </div>
         </header>
@@ -54,13 +61,14 @@ export default {
     // },
     mounted() {
         console.log('mounting userlayout')
-        this.fetchAuthUser()
+        // this.fetchAuthUser()
         console.log('userlayout is mounted')
     },
     methods: {
         fetchAuthUser() {
             console.log('fetchAuthUser')
-            axios.get('/user')
+            
+            axios.get('api/user')
                 .then(response => response.data)
                 .then(user => {
                     console.log({ user })
@@ -75,16 +83,19 @@ export default {
         //     axios.post(window.routeUrl.logout);
         //     console.log('Logout');
         // }
-        logout() {
+        async logout() {
             try {
-                // Kirim request POST ke endpoint logout
-                axios.post('/admin/logout', {}, {
+                await axios.post('/api/logout', {}, {
                     headers: {
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                        'Authorization': `Bearer ${localStorage.getItem('auth_token')}`
                     }
                 });
-                // Redirect atau update status setelah logout
-                window.location.href = '/admin/login'; // Ganti dengan URL login jika diperlukan
+
+                // Remove the token from localStorage
+                localStorage.removeItem('auth_token');
+
+                // Redirect to login page
+                this.$router.push('/login');
             } catch (error) {
                 console.error('Logout error:', error);
             }

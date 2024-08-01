@@ -33,6 +33,14 @@ const resolveComponentBasedOnRole = async () => {
 
 const routes = [
     {
+        path: '/login',
+        name: 'login',
+        component: Login,
+        meta: {
+            layout: 'LoginLayout'
+        }
+    },
+    {
         path: '/registration',
         name: 'registration',
         component: Registration,
@@ -81,6 +89,15 @@ const routes = [
 
     {
         path: '/',
+        name: 'Home',
+        component: Dashboard,
+        meta: {
+            layout: 'UserLayout',
+            requiresAuth: false
+        }
+    },
+    {
+        path: '/dashboard',
         name: 'Dashboard',
         component: Dashboard,
         meta: {

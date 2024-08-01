@@ -6,6 +6,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\IdentityController;
 use App\Http\Controllers\IbuController;
+// use App\Http\Controllers\Auth\AuthController;
+
 // use App\Http\Controllers\ConfigController;
 
 /*
@@ -37,3 +39,9 @@ Route::get('/religion', [IdentityController::class, 'getReligion']);
 
 Route::get('/get_mother/{user_id}', [IbuController::class, 'index']);
 Route::get('/get_week_user', [IbuController::class, 'getWeek']);
+
+
+Route::post('login', [AuthController::class, 'login']);
+Route::post('logout', [AuthController::class, 'logout'])->middleware('auth:api');
+Route::get('user', [AuthController::class, 'user'])->middleware('auth:api');
+
