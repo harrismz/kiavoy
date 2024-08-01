@@ -13,6 +13,8 @@ import MenuMedis from './components/medis/menu.vue';
 import Checkup from './components/medis/checkup.vue';
 import MenuIbu from './components/ibu/menu.vue';
 import CheckupShow from './components/medis/checkupShow.vue';
+import CheckupShow from './components/medis/checkupShow.vue';
+import MenuIbu from './components/ibu/menu.vue';
 
 const resolveComponentBasedOnRole = async () => {
     const userRole = store.state.user.role; // Assuming the user's role is stored in the Vuex store
@@ -25,8 +27,8 @@ const resolveComponentBasedOnRole = async () => {
             const { default: IdentitasAyah } = await import('./components/Ayah/IdentitasAyah.vue');
             return IdentitasAyah;
         default:
-            const { default: IdentitasIbu } = await import('./components/Ibu/IdentitasIbu.vue');
-            return IdentitasIbu;
+            const { default: Checkup } = await import('./components/medis/checkup.vue');
+            return Checkup;
     }
 }
 
