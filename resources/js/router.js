@@ -15,6 +15,7 @@ import MenuIbu from './components/ibu/menu.vue';
 import CheckupShow from './components/medis/checkupShow.vue';
 import CheckupShow from './components/medis/checkupShow.vue';
 import MenuIbu from './components/ibu/menu.vue';
+import Dashboard from './components/Dashboard.vue';
 
 const resolveComponentBasedOnRole = async () => {
     const userRole = store.state.user.role; // Assuming the user's role is stored in the Vuex store
@@ -77,6 +78,16 @@ const routes = [
         meta: {
             layout: 'UserLayout',
             requiresAuth: true
+        }
+    },
+
+    {
+        path: '/',
+        name: 'Dashboard',
+        component: Dashboard,
+        meta: {
+            layout: 'UserLayout',
+            requiresAuth: false
         }
     },
 
