@@ -21,7 +21,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="icon">
-                            <img src="https://via.placeholder.com/100" alt="Check Up Icon" class="img-fluid">
+                            <img src="/public/storage/images/checkup.png" alt="Check Up Icon" class="img-fluid">
                         </div>
                         <h5 class="card-title mt-3">Check Up</h5>
                         <p class="card-text">Menu check up sebagai catatan kesehatan ibu serta pertumbuhan anak yang diintegrasikan menggunakan QR code.</p>
@@ -33,7 +33,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="icon">
-                            <img src="https://via.placeholder.com/100" alt="History Icon" class="img-fluid">
+                            <img src="/public/storage/images/history.png" alt="History Icon" class="img-fluid">
                         </div>
                         <h5 class="card-title mt-3">History</h5>
                         <p class="card-text">History seluruh check up yang telah dilakukan baik pada ibu hamil maupun anak.</p>
@@ -45,7 +45,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="icon">
-                            <img src="https://via.placeholder.com/100" alt="Information Icon" class="img-fluid">
+                            <img src="/public/storage/images/information.png" alt="Information Icon" class="img-fluid">
                         </div>
                         <h5 class="card-title mt-3">Information</h5>
                         <p class="card-text">Informasi seputar perawatan dan pemenuhan gizi anak, serta informasi relevan lainnya dapat dibaca pada menu ini.</p>
@@ -53,9 +53,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="nav-icon">
-            <img src="https://via.placeholder.com/40" alt="Profile Icon" class="img-fluid rounded-circle">
         </div>
     </div>
 </template>
