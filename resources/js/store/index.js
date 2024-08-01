@@ -3,7 +3,9 @@ import axios from 'axios';
 
 const store = createStore({
     state: {
-        user: null, // Informasi pengguna yang login
+        user: {
+            role: 'ibu'
+        }, // Informasi pengguna yang login
         config: {
             baseUrl: '', // URL dasar yang mungkin diperlukan
             imgLogo: '',

@@ -10,6 +10,19 @@ import QRCode from './components/utils/QRCode.vue';
 import UserLayout from './layouts/UserLayout.vue';
 import LoginLayout from './layouts/LoginLayout.vue';
 
+const resolveComponentBasedOnRole = () => {
+    const userRole = store.state.user.role; // Assuming the user's role is stored in the Vuex store
+
+    switch (userRole) {
+        case 'ibu':
+            return Profile;
+        case 'ayah':
+            return IdentitasAyah;
+        default:
+            return IdentitasIbu;
+    }
+}
+
 const routes = [
     {
         path: '/registration',
@@ -48,9 +61,9 @@ const routes = [
         }
     },
     {
-        path: '/',
+        path: '/admin',
         name: 'Profile',
-        component: Profile,
+        component: resolveComponentBasedOnRole,
         meta: {
             layout: 'UserLayout',
             requiresAuth: true

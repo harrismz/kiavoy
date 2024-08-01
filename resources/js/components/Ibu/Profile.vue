@@ -8,10 +8,10 @@
             </div>
         </div>
         <Stepper :steps="weeks" :currentStep.sync="currentWeek" />
-        <div class="flex justify-between mb-4">
-            <div class="flex-1 text-center py-2 bg-gray-200 rounded mx-1">Trimester 1</div>
-            <div class="flex-1 text-center py-2 bg-gray-200 rounded mx-1">Trimester 2</div>
-            <div class="flex-1 text-center py-2 bg-gray-200 rounded mx-1">Trimester 3</div>
+        <div class="flex justify-between mb-4 nav nav-tabs">
+            <div class="flex-1 text-center py-2 bg-gray-200 rounded mx-1 nav-item">Trimester 1</div>
+            <div class="flex-1 text-center py-2 bg-gray-200 rounded mx-1 nav-item">Trimester 2</div>
+            <div class="flex-1 text-center py-2 bg-gray-200 rounded mx-1 nav-item">Trimester 3</div>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <ProfileCard v-for="card in cards" :key="card.title" :title="card.title" :description="card.description"

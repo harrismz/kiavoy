@@ -4,7 +4,7 @@ import router from './router';
 import store from './store';
 
 import './bootstrap';
-import 'tailwindcss/tailwind.css';
+// import 'tailwindcss/tailwind.css';
 import 'toastr/build/toastr.min.css';
 
 const app = createApp(App);
