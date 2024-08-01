@@ -11,12 +11,12 @@
     />
 
     <!-- Chart Section -->
-    <div class="col-span-1 md:col-span-2 lg:col-span-3">
+    <!-- <div class="col-span-1 md:col-span-2 lg:col-span-3">
         <div class="bg-white shadow rounded-lg p-4">
         <h2 class="text-xl font-semibold mb-4">Grafik Evaluasi Kehamilan</h2>
         <LineChart :data="chartData" />
         </div>
-    </div>
+    </div> -->
     </div>
 </div>
 </template>
@@ -25,7 +25,7 @@
 import { Line } from 'vue-chartjs';
 import { Chart as ChartJS, LineElement, CategoryScale, LinearScale } from 'chart.js';
 import ProfileCard from './utils/ProfileCard.vue';
-
+import toastr from 'toastr';
 ChartJS.register(LineElement, CategoryScale, LinearScale);
 
 export default {
@@ -70,15 +70,16 @@ data() {
 },
 methods: {
     fetchUserAuth() {
-    axios.get('/user/')
+
+    axios.get('/user')
         .then(response => response.data)
         .then(response => {
         this.user = response.user;
-        console.log('fetching user : ', response.user);
+            console.log('fetching user : ', response.user);
         })
         .catch(error => {
-        console.error(error);
-        toastr.error(`fetching user ERROR : ${error}`)
+            console.error(error);
+            toastr.error(`fetching user ERROR : ${error}`)
         });
     },
     fetchMother() {
@@ -103,10 +104,7 @@ methods: {
     }
 },
 mounted() {
-    this.fetchUserAuth()
-    .then(() => this.fetchMother(this.user))
-    .then(() => this.fetchWeekUser(this.mother.id))
-    .catch(error => console.error('Error fetching data:', error));
+    
 }
 };
 </script>

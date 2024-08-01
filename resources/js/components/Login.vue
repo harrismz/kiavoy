@@ -6,7 +6,7 @@
                     <div>
                         <!-- <img src="http://localhost:8000/storage/users/July2024/5EBVXVtkaXZtpxHTUFxL.png" alt="Logo"
                         class="w-32 h-32 mb-4"> -->
-                        <img src="http://localhost:8000/storage/settings/July2024/v1SNW071gmIWJmDqqIdh.png" alt="Image"
+                        <img src="/storage/images/buku_kia.png" alt="Image"
                             class="w-full h-full object-cover">
                     </div>
                 </div>
@@ -63,14 +63,22 @@ export default {
     },
     methods: {
         async login() {
-            try {
-                const response = await axios.post(window.routeUrl.login, this.form);
-                localStorage.setItem('user', JSON.stringify(response.data));
-                window.location.href = '/admin'; // Redirect to admin dashboard after login
-            } catch (error) {
-                this.error = 'Invalid credentials';
-                console.error(error);
-            }
+        try {
+            
+            const response = await axios.post('/api/login', {
+                email: this.form.email,
+                password: this.form.password
+            });
+            
+            let data = response.data;
+
+            localStorage.setItem('auth_token', data.access_token);
+
+            this.$router.push('/dashboard');
+
+        } catch (error) {
+            this.error = error.response.data.message || 'An error occurred';
+        }
         }
     }
 };

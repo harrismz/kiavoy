@@ -11,8 +11,8 @@ import UserLayout from './layouts/UserLayout.vue';
 import LoginLayout from './layouts/LoginLayout.vue';
 import MenuMedis from './components/medis/menu.vue';
 import Checkup from './components/medis/checkup.vue';
-import MenuIbu from './components/ibu/menu.vue';
 import CheckupShow from './components/medis/checkupShow.vue';
+import MenuIbu from './components/ibu/menu.vue';
 import Dashboard from './components/Dashboard.vue';
 
 const resolveComponentBasedOnRole = async () => {
@@ -32,6 +32,14 @@ const resolveComponentBasedOnRole = async () => {
 }
 
 const routes = [
+    {
+        path: '/login',
+        name: 'login',
+        component: Login,
+        meta: {
+            layout: 'LoginLayout'
+        }
+    },
     {
         path: '/registration',
         name: 'registration',
@@ -81,6 +89,15 @@ const routes = [
 
     {
         path: '/',
+        name: 'Home',
+        component: Dashboard,
+        meta: {
+            layout: 'UserLayout',
+            requiresAuth: false
+        }
+    },
+    {
+        path: '/dashboard',
         name: 'Dashboard',
         component: Dashboard,
         meta: {
