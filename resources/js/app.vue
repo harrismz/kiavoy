@@ -1,7 +1,7 @@
 <template>
-    <!-- <component :is="layout">
-    </component> -->
-    <router-view></router-view>
+    <component :is="layout">
+        <router-view></router-view>
+    </component>
 </template>
 
 <script>
