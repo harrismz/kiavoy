@@ -12,6 +12,7 @@ import LoginLayout from './layouts/LoginLayout.vue';
 import MenuMedis from './components/medis/menu.vue';
 import Checkup from './components/medis/checkup.vue';
 import MenuIbu from './components/ibu/menu.vue';
+import CheckupShow from './components/medis/checkupShow.vue';
 
 const resolveComponentBasedOnRole = async () => {
     const userRole = store.state.user.role; // Assuming the user's role is stored in the Vuex store
@@ -81,6 +82,15 @@ const routes = [
         path: '/admin/checkup',
         name: 'checkup',
         component: Checkup,
+        meta: {
+            layout: 'UserLayout',
+            requiresAuth: true
+        }
+    },
+    {
+        path: '/admin/checkup/show',
+        name: 'checkup-show',
+        component: CheckupShow,
         meta: {
             layout: 'UserLayout',
             requiresAuth: true
