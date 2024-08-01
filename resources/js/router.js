@@ -9,13 +9,14 @@ import HealthRecordIbu from './components/Ibu/HealthRecord.vue';
 import QRCode from './components/utils/QRCode.vue';
 import UserLayout from './layouts/UserLayout.vue';
 import LoginLayout from './layouts/LoginLayout.vue';
+import MenuMedis from './components/medis/menu.vue';
 
 const resolveComponentBasedOnRole = () => {
     const userRole = store.state.user.role; // Assuming the user's role is stored in the Vuex store
 
     switch (userRole) {
         case 'ibu':
-            return Profile;
+            return MenuMedis;
         case 'ayah':
             return IdentitasAyah;
         default:
