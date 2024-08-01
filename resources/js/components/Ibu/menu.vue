@@ -71,7 +71,7 @@ const currentUser = ref({
 });
 
 const weeks = ref([
-    '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'
+    'Minggu ke-1', 'Minggu ke-2', 'Minggu ke-3', 'Minggu ke-4', 'Minggu ke-5', 'Minggu ke-6', 'Minggu ke-7', 'Minggu ke-8', 'Minggu ke-9', 'Minggu ke-10'
 ]);
 
 const trimesters = ref([
