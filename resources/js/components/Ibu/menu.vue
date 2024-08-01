@@ -1,12 +1,10 @@
 <template>
     <div class="container my-4">
+        <!-- Logo and User Info -->
         <div class="row mb-4">
-            <div class="col-md-3">
-                <img :src="logoUrl" alt="Logo" class="img-fluid mb-3">
-            </div>
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body d-flex justify-content-between align-items-center">
                         <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -18,30 +16,40 @@
                                 <a class="dropdown-item" href="#">Tambah Identitas Anak</a>
                             </div>
                         </div>
-                        <div class="mt-4">
-                            <button class="btn btn-primary mr-2">Minggu ke-5</button>
-                            <button class="btn btn-primary mr-2">Minggu ke-6</button>
-                            <button class="btn btn-primary">Minggu ke-7</button>
+                        <div class="d-flex">
+                            <button class="btn btn-primary mr-2" v-for="(week, index) in weeks" :key="index">
+                                {{ week }}
+                            </button>
+                            <button class="btn btn-secondary">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="row">
+        <!-- Stepper -->
+        <div class="row mb-4">
             <div class="col-md-12">
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25"
-                        aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
+                <ul class="stepper">
+                    <li v-for="(step, index) in trimesters" :key="index" :class="{ active: currentStep >= index }">
+                        <span class="stepper-number">{{ index + 1 }}</span>
+                        <span class="stepper-label">{{ step }}</span>
+                    </li>
+                </ul>
             </div>
         </div>
 
+        <!-- Cards Section -->
         <div class="row mt-4">
             <div class="col-md-4" v-for="(card, index) in trimesterCards" :key="index">
                 <div class="card mb-4">
                     <div class="card-body">
-                        <h5 class="card-title">{{ card.title }}</h5>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="card-title">{{ card.title }}</h5>
+                            <i :class="card.iconClass"></i>
+                        </div>
                         <p class="card-text">{{ card.description }}</p>
                         <a href="#" class="btn btn-outline-primary">Selengkapnya ></a>
                     </div>
@@ -62,16 +70,84 @@ const currentUser = ref({
     dob: '01 Jan 1990'
 });
 
-const trimesterCards = ref([
-    { title: 'Info Janin Secara Umum', description: 'Tinggi : xxx cm, Berat : xxx cm, Ukuran : xxx' },
-    { title: 'Diary Ibu', description: 'Pencatatan mingguan, perawatan sehari-hari...' },
-    { title: 'Catatan Kesehatan Ibu', description: 'Hasil skrining...' },
-    { title: 'Grafik Evaluasi Kehamilan', description: 'Grafik peningkatan berat badan...' },
-    { title: 'Information', description: 'Informasi seputar kehamilan...' },
-    { title: 'Riwayat Persalinan', description: 'Informasi seputar persalinan...' }
+const weeks = ref([
+    '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'
 ]);
+
+const trimesters = ref([
+    'Trimester 1', 'Trimester 2', 'Trimester 3'
+]);
+
+const currentStep = ref(0); // Step yang sedang aktif
+
+const trimesterCards = ref([
+    { title: 'Info Janin Secara Umum', description: 'Tinggi : xxx cm, Berat : xxx cm, Ukuran : xxx', iconClass: 'fas fa-baby' },
+    { title: 'Diary Ibu', description: 'Pencatatan mingguan, perawatan sehari-hari...', iconClass: 'fas fa-book' },
+    { title: 'Catatan Kesehatan Ibu', description: 'Hasil skrining...', iconClass: 'fas fa-notes-medical' },
+    { title: 'Grafik Evaluasi Kehamilan', description: 'Grafik peningkatan berat badan...', iconClass: 'fas fa-chart-line' },
+    { title: 'Information', description: 'Informasi seputar kehamilan...', iconClass: 'fas fa-info-circle' },
+    { title: 'Riwayat Persalinan', description: 'Informasi seputar persalinan...', iconClass: 'fas fa-baby-carriage' }
+]);
+
+
 </script>
 
 <style scoped>
-/* Gaya tambahan jika diperlukan */
+/* Gaya untuk stepper */
+.stepper {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.stepper li {
+    text-align: center;
+    position: relative;
+    flex: 1;
+}
+
+.stepper-number {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 50%;
+    background-color: #ddd;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.stepper-label {
+    display: block;
+    color: #999;
+}
+
+.stepper li.active .stepper-number {
+    background-color: #007bff;
+}
+
+.stepper li.active .stepper-label {
+    color: #007bff;
+}
+
+.stepper li:before {
+    content: '';
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    width: 100%;
+    height: 2px;
+    background-color: #ddd;
+    z-index: -1;
+}
+
+.stepper li:first-child:before {
+    display: none;
+}
+
+.stepper li.active:before {
+    background-color: #007bff;
+}
 </style>
